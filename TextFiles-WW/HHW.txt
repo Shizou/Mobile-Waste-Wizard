@@ -1,0 +1,331 @@
+BBQ tank
+tanks
+Barbeque propane cylinder
+sealant
+Driveway sealer
+blue print
+Blueprint ink
+puffer
+ventolin
+vicks
+Inhaler (full)
+
+Welding Tank
+ice pack
+gel ice pack
+hot pack
+cold pack
+hot cold pack
+gel pak
+Gel pack
+car
+automobile
+automotive
+cleaning product
+chemical
+Car care product
+
+Chemicals
+cleaning products
+cleaner
+cleanser
+Draino
+chemical
+Drain cleaner
+adhesive
+paste
+chemicals
+Glue
+cosmetics
+chemicals
+hair colour
+
+Hair dye
+chemicals
+Herbicide
+chemicals
+insect repellent
+Insecticides
+cosmetics
+lacquer
+chemicals
+Nail polish and remover
+cleaners
+cleaning products
+cleansers
+Easy-off
+chemicals
+Oven cleaner
+thinners
+turpentine
+chemicals
+Paint thinner
+cosmetics
+permanent solution
+chemicals
+dye
+Perm solution
+paint thinner
+chian turpentine
+spirit of turpentine
+oil of turpentine
+wood turpentine
+gum turpentine
+chemicals
+Turpentine
+shellac
+oil varnish
+spirit varnish
+lacquer
+chemicals
+Varnish
+naphtha
+butane
+fuel
+Lighter fluid
+gasoline
+fuel
+Gas
+fuel
+paraffin oil
+kerosine
+Kerosene
+vitamines
+pills
+pharmaceuticals
+liquid
+Vitamins and supplements
+
+Baby oil
+shoe cream
+shoe paste
+liquid polish
+Shoe polish
+
+hand sanitizer
+
+Roofing tar
+
+sunscreen
+
+bear spray
+cologne
+eau de toilette
+perfume
+liquid paper
+white out
+latex paint
+primer
+Paint (latex and oil)
+Javex
+Chlorox
+clorox
+A-jax
+ajax
+whitener
+Bleach
+compact
+Energy efficient light bulb
+2-4-D
+24D
+Diazinon
+round-up
+weed killer
+weed spray
+Garden chemical
+car
+chemicals
+automotive
+automobile
+batteries
+automobile battery
+automobile batteries
+Vehicle battery
+automobile
+automotive
+Car wax
+oils
+car
+lubricants
+automotive
+Grease (automobile)
+
+Fire extinguisher
+Super-glue
+Krazy glue
+nailpolish
+cosmetics
+makeup
+make up
+make-up
+Acetone nail polish remover
+cosmetics
+makeup
+make up
+make-up
+Nail polish
+propane tank
+canister
+propane cylinder
+helium tank
+helium cylinder
+oxygen tank
+co2
+butane
+butane gas
+Compressed Gas
+oils
+car
+automobile
+automotive
+oil jug
+oil bottle
+Motor oil
+oil
+WD-40
+lube
+WD40
+chemicals
+Lubricant
+caustic chemicals
+muriatic
+acids
+Acid or base
+glue
+adhesives
+Adhesive (all types)
+spray
+Aerosol can (full or partially full)
+chemicals
+ethyl glycol
+Antifreeze
+car
+automobile
+automotive
+chemical
+Brake fluid
+car
+automobile
+automotive
+chemicals
+Transmission fluid
+pool chemical
+chlorine puck
+Chlorine
+household cleaning product
+chemical
+carpet cleaner
+Cleaner or detergent
+lawn
+chemicals
+Miracle grow
+Fertilizer
+lawn
+chemicals
+round up
+round-up
+weed killer
+Pesticide
+fuels
+diesel
+coal oil
+naphtha
+kerosene
+canned heat
+sterno
+fondue fuel
+alcohol
+petroleum
+canister
+camp fuel
+white gas
+camp fuel
+lamp oil
+Fuel
+filters
+oils
+automotive
+Oil filter
+
+Paint or stain
+lacquer thinner
+paint thinner
+naphtha
+denatured alcohol
+turpentine
+Solvents
+photography
+chemicals
+Photographic chemicals
+muriatic acid
+algaecide
+pH buffer
+Pool chemical
+lead acid
+chemicals
+alkaline
+CopperTop
+coppertop
+Duracell
+ni-cads
+rechargable
+nickel cadmium
+battery
+flashlight with battery
+flashlight with batteries
+lithium ion
+electronic greeting cards
+musical gretting cards
+electronic cigarettes
+e cigarettes
+e-cigarettes
+hearing aid batteries
+hearing aid battery
+portable cell phone charger
+cell phone battery pack
+Household batteries
+bulbs
+tubes
+compact
+CFLs
+ballasts
+fluorescent tube light
+florescent light bulb
+Fluorescent light bulb/tube
+thermometers
+switches
+thermometer
+Mercury thermometre/thermostat
+deep fryer oil
+liquid
+soup
+Cooking oil (liquid)
+pet powder
+Flea powder
+syringes
+biohazardous
+hypodermic
+sharps
+lancets
+Syringe
+needles
+biohazardous
+hypodermic
+sharps
+lancets
+syringes
+Needle
+pharmaceuticals
+medicine
+pills
+drugs
+prescriptions
+over the counter
+over-the-counter
+medications
+rubbing alcohol
+Medication
+lancets
+biohazardous
+sharps
+Lancet

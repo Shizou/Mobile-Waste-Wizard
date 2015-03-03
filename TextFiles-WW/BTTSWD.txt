@@ -1,0 +1,106 @@
+tyres
+automobile
+automotive
+car tire
+small truck tire
+tires
+Tire
+fiberglass
+tub
+bath tub
+
+Bathtub (non metal)
+fiberglass stall
+insert
+Shower-dismantled
+fibre-glass
+fibreglass
+pink fibre glass
+ductile foam sheet
+ductile foam sheets
+Insulation
+construction
+demolition
+C & D wastes
+skid
+pressure treated wood
+ceiling tile
+wood panelling
+plywood
+wood flooring
+fencing
+railway ties
+baseboards
+quarter rounds
+Lumber, wood
+wooden garage door
+folding wooden door
+Door- wooden
+
+Awning
+countertop
+Counter top
+
+Gazebo
+eavestrough
+down spout
+downspout
+Eaves trough
+shower walls
+Metal shower enclosure (dismantled)
+ceramic
+porcelain
+slate
+floor tiles
+ceiling tiles
+
+Tiles
+
+Shingles
+sawdust
+Saw dust
+kitchen cupboard
+Kitchen cabinet
+window glass
+window shutter
+Window frame
+
+Door-glass/patio/shower
+
+Vanity (non-metal)
+laundry sink
+laundry tub
+kitchen
+bathroom
+tub
+porcelain
+fiberglass
+Sinks-non-metal
+jacuzzi
+Hot tub
+
+Parquet flooring
+pool cover
+pool
+liner
+hot tub cover
+Pool tarp
+aluminum door
+metal garage door
+screen door
+Door-metal
+gas
+diesel
+Vehicle  tank (empty)
+muffler
+car seat
+oil tank
+Car part (metal)
+lawn tractor
+ride on lawnmower
+lawn mower
+Lawnmower (ride on)
+dry wall
+gyp rock
+plaster
+Drywall (clean; painted, vinyl or paper covered only)
