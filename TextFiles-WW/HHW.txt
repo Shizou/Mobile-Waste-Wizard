@@ -1,331 +1,241 @@
-BBQ tank
-tanks
-Barbeque propane cylinder
-sealant
-Driveway sealer
-blue print
-Blueprint ink
-puffer
-ventolin
-vicks
-Inhaler (full)
-
-Welding Tank
-ice pack
-gel ice pack
-hot pack
-cold pack
-hot cold pack
-gel pak
-Gel pack
-car
-automobile
-automotive
-cleaning product
-chemical
-Car care product
-
-Chemicals
-cleaning products
-cleaner
-cleanser
-Draino
-chemical
-Drain cleaner
+2-4-d
+24d
+a-jax
+acetone nail polish remover
+acid or base
+acids
 adhesive
-paste
-chemicals
-Glue
-cosmetics
-chemicals
-hair colour
-
-Hair dye
-chemicals
-Herbicide
-chemicals
-insect repellent
-Insecticides
-cosmetics
-lacquer
-chemicals
-Nail polish and remover
-cleaners
-cleaning products
-cleansers
-Easy-off
-chemicals
-Oven cleaner
-thinners
-turpentine
-chemicals
-Paint thinner
-cosmetics
-permanent solution
-chemicals
-dye
-Perm solution
-paint thinner
-chian turpentine
-spirit of turpentine
-oil of turpentine
-wood turpentine
-gum turpentine
-chemicals
-Turpentine
-shellac
-oil varnish
-spirit varnish
-lacquer
-chemicals
-Varnish
-naphtha
-butane
-fuel
-Lighter fluid
-gasoline
-fuel
-Gas
-fuel
-paraffin oil
-kerosine
-Kerosene
-vitamines
-pills
-pharmaceuticals
-liquid
-Vitamins and supplements
-
-Baby oil
-shoe cream
-shoe paste
-liquid polish
-Shoe polish
-
-hand sanitizer
-
-Roofing tar
-
-sunscreen
-
-bear spray
-cologne
-eau de toilette
-perfume
-liquid paper
-white out
-latex paint
-primer
-Paint (latex and oil)
-Javex
-Chlorox
-clorox
-A-jax
+adhesive (all types)
+adhesives
+aerosol can (full or partially full)
 ajax
-whitener
-Bleach
-compact
-Energy efficient light bulb
-2-4-D
-24D
-Diazinon
-round-up
-weed killer
-weed spray
-Garden chemical
-car
-chemicals
-automotive
+alcohol
+algaecide
+alkaline
+antifreeze
 automobile
-batteries
-automobile battery
 automobile batteries
-Vehicle battery
-automobile
+automobile battery
 automotive
-Car wax
-oils
-car
-lubricants
-automotive
-Grease (automobile)
-
-Fire extinguisher
-Super-glue
-Krazy glue
-nailpolish
-cosmetics
-makeup
-make up
-make-up
-Acetone nail polish remover
-cosmetics
-makeup
-make up
-make-up
-Nail polish
-propane tank
-canister
-propane cylinder
-helium tank
-helium cylinder
-oxygen tank
-co2
+baby oil
+ballasts
+barbeque propane cylinder
+batteries
+battery
+bbq tank
+bear spray
+biohazardous
+bleach
+blue print
+blueprint ink
+brake fluid
+bulbs
 butane
 butane gas
-Compressed Gas
-oils
-car
-automobile
-automotive
-oil jug
-oil bottle
-Motor oil
-oil
-WD-40
-lube
-WD40
-chemicals
-Lubricant
-caustic chemicals
-muriatic
-acids
-Acid or base
-glue
-adhesives
-Adhesive (all types)
-spray
-Aerosol can (full or partially full)
-chemicals
-ethyl glycol
-Antifreeze
-car
-automobile
-automotive
-chemical
-Brake fluid
-car
-automobile
-automotive
-chemicals
-Transmission fluid
-pool chemical
-chlorine puck
-Chlorine
-household cleaning product
-chemical
-carpet cleaner
-Cleaner or detergent
-lawn
-chemicals
-Miracle grow
-Fertilizer
-lawn
-chemicals
-round up
-round-up
-weed killer
-Pesticide
-fuels
-diesel
-coal oil
-naphtha
-kerosene
-canned heat
-sterno
-fondue fuel
-alcohol
-petroleum
+camp fuel
 canister
-camp fuel
-white gas
-camp fuel
-lamp oil
-Fuel
-filters
-oils
-automotive
-Oil filter
-
-Paint or stain
-lacquer thinner
-paint thinner
-naphtha
-denatured alcohol
-turpentine
-Solvents
-photography
+canned heat
+car
+car care product
+car wax
+carpet cleaner
+caustic chemicals
+cell phone battery pack
+cfls
+chemical
 chemicals
-Photographic chemicals
-muriatic acid
-algaecide
-pH buffer
-Pool chemical
-lead acid
-chemicals
-alkaline
-CopperTop
+chian turpentine
+chlorine
+chlorine puck
+chlorox
+cleaner
+cleaner or detergent
+cleaners
+cleaning product
+cleaning products
+cleanser
+cleansers
+clorox
+co2
+coal oil
+cold pack
+cologne
+compact
+compressed gas
+cooking oil (liquid)
 coppertop
-Duracell
-ni-cads
-rechargable
-nickel cadmium
-battery
-flashlight with battery
-flashlight with batteries
-lithium ion
-electronic greeting cards
-musical gretting cards
-electronic cigarettes
+cosmetics
+deep fryer oil
+denatured alcohol
+diazinon
+diesel
+drain cleaner
+draino
+driveway sealer
+drugs
+duracell
+dye
 e cigarettes
 e-cigarettes
+easy-off
+eau de toilette
+electronic cigarettes
+electronic greeting cards
+energy efficient light bulb
+ethyl glycol
+fertilizer
+filters
+fire extinguisher
+flashlight with batteries
+flashlight with battery
+flea powder
+florescent light bulb
+fluorescent light bulb/tube
+fluorescent tube light
+fondue fuel
+fuel
+fuels
+garden chemical
+gas
+gasoline
+gel ice pack
+gel pack
+gel pak
+glue
+grease (automobile)
+gum turpentine
+hair colour
+hair dye
+hand sanitizer
 hearing aid batteries
 hearing aid battery
-portable cell phone charger
-cell phone battery pack
-Household batteries
-bulbs
-tubes
-compact
-CFLs
-ballasts
-fluorescent tube light
-florescent light bulb
-Fluorescent light bulb/tube
-thermometers
-switches
-thermometer
-Mercury thermometre/thermostat
-deep fryer oil
+helium cylinder
+helium tank
+herbicide
+hot cold pack
+hot pack
+household batteries
+household cleaning product
+hypodermic
+ice pack
+inhaler (full)
+insect repellent
+insecticides
+javex
+kerosene
+kerosine
+krazy glue
+lacquer
+lacquer thinner
+lamp oil
+lancet
+lancets
+latex paint
+lawn
+lead acid
+lighter fluid
 liquid
-soup
-Cooking oil (liquid)
-pet powder
-Flea powder
-syringes
-biohazardous
-hypodermic
-sharps
-lancets
-Syringe
-needles
-biohazardous
-hypodermic
-sharps
-lancets
-syringes
-Needle
-pharmaceuticals
+liquid paper
+liquid polish
+lithium ion
+lube
+lubricant
+lubricants
+make up
+make-up
+makeup
+medication
+medications
 medicine
-pills
-drugs
-prescriptions
+mercury thermometre/thermostat
+miracle grow
+motor oil
+muriatic
+muriatic acid
+musical gretting cards
+nail polish
+nail polish and remover
+nailpolish
+naphtha
+needle
+needles
+ni-cads
+nickel cadmium
+oil
+oil bottle
+oil filter
+oil jug
+oil of turpentine
+oil varnish
+oils
+oven cleaner
 over the counter
 over-the-counter
-medications
+oxygen tank
+paint (latex and oil)
+paint or stain
+paint thinner
+paraffin oil
+paste
+perfume
+perm solution
+permanent solution
+pesticide
+pet powder
+petroleum
+ph buffer
+pharmaceuticals
+photographic chemicals
+photography
+pills
+pool chemical
+portable cell phone charger
+prescriptions
+primer
+propane cylinder
+propane tank
+puffer
+rechargable
+roofing tar
+round up
+round-up
 rubbing alcohol
-Medication
-lancets
-biohazardous
+sealant
 sharps
-Lancet
+shellac
+shoe cream
+shoe paste
+shoe polish
+solvents
+soup
+spirit of turpentine
+spirit varnish
+spray
+sterno
+sunscreen
+super-glue
+switches
+syringe
+syringes
+tanks
+thermometer
+thermometers
+thinners
+transmission fluid
+tubes
+turpentine
+varnish
+vehicle battery
+ventolin
+vicks
+vitamines
+vitamins and supplements
+wd-40
+wd40
+weed killer
+weed spray
+welding tank
+white gas
+white out
+whitener
+wood turpentine

@@ -1,108 +1,89 @@
-
-Paving / Patio stones
-grout
-cement powder
-stucco
-mortar
-Cement
-
-Cinder Block
-
-clay pipe
-
-marble slab
-
-car parts (plastic)
-
-boat
-
-cast iron tub
-
+aluminum siding
+ammunition
+asbestos
 asphalt
-concrete laundry tubs
+billiard
+boat
+bricks
+bullets
+bus
+car parts (plastic)
+carcas
+cast iron tub
+cement
+cement powder
+cinder block
+clay pipe
+concrete block
 concrete laundry tub
+concrete laundry tubs
+concrete pieces
+concrete sink
+concrete tub
+corpse
+cue
+dead animal
+dirt or sod
+diving board
+ebike
+electric bike
+fill
+firecrackers
+fireworks
+flares
+grass
+grass clippings
+grout
+heater
+hot tub
+illuminations
+insulation
+jet ski
+marble slab
+mortar
+motorcycle
+motorized personal transporters
+oil tank
+paving / patio stones
+pcb
+pcbs
+piano or organ
+pickup truck cabs
+piece of concrete
+pool heater
+pool pump
+pool table
+projectiles
+pump
+pyrotechnic
+pyrotechnics
+remains
+road flares
+rockets
+rocks and gravel
+sand
+scooter
+sea-doo
+segway
+shells
+shrapnel
+ski-doo
+snooker
+snow mobile
+snowmobile
+soil
+sparklers
+stucco
+stumps and large branches
+taxi
+telephone pole
+tent trailer
+thatch
+tree
+tree trunk
 truck cabs
 truck caps
 truck toppers
-pickup truck cabs
-
-Oil tank
+vehicle propane tank
+vending machine
 vinyl siding
-Aluminum siding
-
-Telephone pole
-
-Tent trailer
-
-Vending machine
-
-Diving board
-billiard
-snooker
-cue
-Pool table
-sea-doo
-ski-doo
-jet ski
-snow mobile
-snowmobile
-ski-doo
-motorcycle
-scooter
-ebike
-electric bike
-segway
-Motorized personal transporters
-
-Piano or organ
-taxi
-bus
-Vehicle propane tank
-
-Bricks
-insulation
-Asbestos
-pcb
-PCBs
-
-Rocks and gravel
-fill
-grass
-sand
-soil
-Dirt or sod
-concrete block
-piece of concrete
-concrete sink
-concrete tub
-Concrete pieces
-tree
-tree trunk
-Stumps and large branches
-firecrackers
-pyrotechnics
-rockets
-sparklers
-illuminations
-Fireworks
-pyrotechnic
-road flares
-Flares
-shrapnel
-bullets
-shells
-projectiles
-Ammunition
-thatch
-Grass clippings
-
-Dead animal
-Carcas
-Remains
-Corpse
-
-pool heater
-pump
-hot tub
-heater
-pool pump

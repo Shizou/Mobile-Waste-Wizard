@@ -1,315 +1,269 @@
-tampons
-maxi pads
-pads
-sanitary napkins
-disposable absorbent pads
-Kotex
-Tampax
-Feminine hygiene products
-animal bedding
-cat
-pet
-clay litter
-clay kitty litter
-Kitty litter
-excrement
-feces
+absorbent paper
+adult diapers
+almonds
 animal
-droppings
-doggie doo
-dog pooh
-dog poo
-dog poop
-Pet waste
-paper plates
-Paper takeout food container
-incontinent
-depends
-Incontinence pad
-Miracle Whip
-Mayonnaise
-flower bouquet
-bouquet
-cut flowers
-Flower (real)
-
-Paper plate (soiled)
-clam
-oyster
-mussel
-periwinkles
-scallop
-snail
-mollusc
+animal bedding
+apple
+au jus
+baby
+bags
+baked goods
+baking ingredient
+baking supplies
+banana
+bbq charcoal bag
+bergamot
 bi-valves
-sea shells
-lobster
-Shell
+biodegradable
+bird seed
+bivalve
+bone
+bouquet
+boxes
+bread
+brie
+brown kraft bags
+buns crust
+burger
+butter
+butter and margarine
+cactus
+cake
+cake and candy
+candies
+candy
+candy cane
+cane
+cartons
+cashews
+cat
+cat food
+cereal
+cereal or grain
+charcoal bag
+cheddar
+cheese
+cherry
+chicory
+chocolate
+chocolate bar
+chocolate bunny
+clam
+clay kitty litter
+clay litter
+coconuts
+coffee grounds / filter
+compostable
+condiments
+cookie
+corn bread
+corn cob or husk
+corn meal
+corn stalk
+couscous
+cream
+crescent
+crusts
 cup cake
 cupcake
-Timbit
-cake
-dessert
-pie
-tart
-crescent
-dough
-Pastry
-cartons
-tubs
-ice cream boxes
-ice cream box
-ice-cream
-Paper ice cream carton
-tissues
-kleenex
-Kleenex
-Kleenx
-Facial tissue
-boxes
-soiled
-Pizza box (greasy)
-microwaveable
-bags
-Microwave popcorn bag
-towels
-disposable
-absorbent paper
-soiled
-paper towels
-Paper towel
-napkins
-serviettes
-disposable
-absorbent paper
-soiled
-Paper napkin
-potted plants
-dead plants
-spider plant
-jade
-cactus
-House plant (including soil)
-food
-Baked goods
-
-Food
-bone
-Meat Bone
-oatmeal
-corn bread
-corn meal
-pasta
-bread
-Cereal or grain
-chicory
-grinds
-Coffee grounds / filter
-cheese
 curd
+cut flowers
+dairy product
+dead plants
+depends
+dessert
+diaper
+diaper genie
+diapers
+dip
+disposable
+disposable absorbent pads
+dog food
+dog poo
+dog pooh
+dog poop
+dog treats
+doggie doo
+dough
+dough (raw)
+dried
+dried flower
+dried flowers
+dried fruit
+droppings
+easter egg
 egg
-brie
-pudding
-yogurt
-cream
-
-Dairy product
-
-Egg / eggshell
-baking supplies
-spelt
-kasha
-Flour
-produce
-Fruit
-produce
-trimmings
-Vegetables
-lard
-shortening
-butter
-gristle
-Grease and fat (solid)
-meat products
-burger
-steak
-ham
-side
-Meats (raw and cooked)
-lobster
-seafood
-shellfish
-mollusc
-bivalve
-Fish (raw and cooked)
-pecans
+egg / eggshell
+excrement
+facial tissue
+feces
+feed
+feminine hygiene products
 filbert
-peanuts
-almonds
-pistachios
-cashews
-coconuts
-nut shells
-Nuts
-noodles
-orzo
-couscous
-semolina
-Pasta
-Uncle Ben's
-Rice
-fruit
-apple
+fish (raw and cooked)
+floral arrangement
+flour
+flower
+flower (real)
+flower bouquet
 food
-produce
-Fruit Core
+food scraps
+french fries
+fries
+fries bag
+fries box
+fries carton
+fruit
+fruit core
 fruits
-vegetables
-banana
-food
-rind
-produce
-Peels
-stones
-cherry
-peach
-plum
-food
-fruit
-produce
-Pit
-sauces
-pasta
-food
-au jus
-condiments
+genie
 gravies
 gravy
-Sauce
-bags
-tea
-tetley
-bergamot
-red rose
-teabags
-Tea bag
-tea leaves
-Loose tea
-nibbles
-dog food
-cat food
-dog treats
-Pet food
-Candy
-Chocolate bar
-Chocolate bunny
-Easter egg
-sweets
-candy cane
+grease and fat (solid)
+grinds
+gristle
+gruel
 halloween
-Sweets
-french fries
-fries box
-Fries
-spice
+ham
 herb
-dough
+herbs
 honey
-syrup
-Baking ingredient
-buns crust
-loaves
-loaf
-Bread
-flour
-wheat
-cookie
-pie
-bread
-Dough (raw)
-mozzarella
-cheddar
-Cheese
-
-Dried fruit
-Pampers
-baby
-nappy
-Pull-ups
-pull-up
-diapers
-genie
-diaper genie
-adult diapers
-puppy training pads
-Diaper
-feed
-Bird seed
-shortening
+house plant (including soil)
+ice cream box
+ice cream boxes
+ice-cream
+incontinence pad
+incontinent
+jade
+kasha
+kernels
+kitty litter
+kleenex
+kleenx
+kotex
 lard
-Butter and margarine
-snack
-dessert
-chocolate
-sweet
-Halloween
-cane
-candies
-muffin
-Cake and candy
-food
-corn stalk
-Corn cob or husk
-floral arrangement
-dried flowers
-Dried flower
-dried
-Flower
 left-overs
 leftovers
-plate scrapings
-Food scraps
-food
-Herbs
-muffin cup
-muffin wrap
-wrapper
-Muffin paper cup
-food
-cereal
-porridge
-gruel
-Oatmeal and oats
-spread
-Peanut butter
-crusts
-Pizza
-kernels
-Popcorn
 lettuce
-Salad and dressing
-
-Seeds
-dip
-Sour cream
-
-Sugar and spices
+loaf
+loaves
+lobster
+loose tea
+maxi pads
+mayonnaise
+meat bone
+meat products
+meats (raw and cooked)
+microwave popcorn bag
+microwaveable
+miracle whip
+mollusc
+mozzarella
+muffin
+muffin cup
+muffin paper cup
+muffin wrap
+mussel
+napkins
+nappy
+nibbles
+noodles
+nut shells
+nuts
+oatmeal
+oatmeal and oats
+orzo
+oyster
+pads
+pampers
+paper bags and cellulose lined paper bags
+paper flour bag
+paper ice cream carton
+paper napkin
+paper plate (soiled)
+paper plates
+paper potato bag
+paper sugar bag
+paper takeout food container
+paper towel
+paper towels
+pasta
+pastry
+peach
+peanut butter
+peanuts
+pecans
+peels
+periwinkles
+pet
+pet food
+pet waste
+pie
+pistachios
+pit
+pizza
+pizza box (greasy)
+plate scrapings
+plum
+popcorn
+popcorn bag
+porridge
+potted plants
+produce
+pudding
+pull-up
+pull-ups
+puppy training pads
+red rose
+rice
+rind
+salad and dressing
+sanitary napkins
+sauce
+sauces
+scallop
+sea shells
+seafood
+seeds
+semolina
+serviettes
+shell
+shellfish
+shortening
+side
+snack
+snail
+soiled
+soiled paper packaging
+sour cream
+spelt
+spice
+spider plant
+spread
+steak
+stones
+sugar and spices
+sweet
+sweets
+syrup
+take-out containers
+tampax
+tampons
+tart
+tea
+tea bag
+tea leaves
+teabags
+tetley
+timbit
+tissues
+towels
+trimmings
+tubs
+uncle ben's
+vegetables
+wheat
+wrapper
 yoghurt
 yogourt
-Yogurt
-brown Kraft bags
-biodegradable
-compostable
-Paper bags and cellulose lined paper bags
-ice cream box
-paper sugar bag
-paper flour bag
-fries box
-popcorn bag
-fries bag
-fries carton
-paper potato bag
-charcoal bag
-BBQ charcoal bag
-take-out containers
-Soiled paper packaging
+yogurt

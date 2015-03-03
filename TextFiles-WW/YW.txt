@@ -1,57 +1,50 @@
-windfall
-walnuts
-pine cones
-pinecone
-fallen fruit from trees
 acorns
-Fruit fallen from trees
-leaf
-Leaves
-
-Lawn edging (earth removed)
-bulbs
-Outdoor garden plant
-weeds
-small shrubs
-garlic mustard plant
-Garden trimmings/Weeds
-lawn chips
 bark
-Wood chips/shavings
+bark chips
+branches
+brush
+bulbs
+christmas tree (real)
 coco-fiber
 coco-fibre
-planter
-Coconut flower pot
-planter
-peatmoss
-peat-moss
-Peat moss flower pot
-bark chips
-wood chips
-mulch
-straw bales
-Hay
-pine needles
-pine cones
+coconut flower pot
 crab apples
-Yard Waste
-twigs
-tree limbs
-branches
+fallen fruit from trees
+fruit fallen from trees
 garden
-brush
-Garden Brush
-branches
+garden brush
 garden trimmings
-hedge clippings
-
-Hedge trimmings
-Tree trimmings
-pumpkins
-Halloween
+garden trimmings/weeds
+garlic mustard plant
 gourds
+halloween
+hay
+hedge clippings
+hedge trimmings
 jack o lanterns
-Pumpkin
-
-
-Christmas Tree (real)
+lawn chips
+lawn edging (earth removed)
+leaf
+leaves
+mulch
+outdoor garden plant
+peat moss flower pot
+peat-moss
+peatmoss
+pine cones
+pine needles
+pinecone
+planter
+pumpkin
+pumpkins
+small shrubs
+straw bales
+tree limbs
+tree trimmings
+twigs
+walnuts
+weeds
+windfall
+wood chips
+wood chips/shavings
+yard waste

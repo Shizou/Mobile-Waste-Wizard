@@ -1,145 +1,119 @@
-microwaves
-Microwave oven
-roto tiller
-Rototiller
-
-Metal safe
+air cleaner
+air conditioner
 air conditioners
-Air conditioner
-water pump
-sewer pump
-sump pump
-laundry pump
-heat pump
-exchanger
-Pump
-barrel
-Drum (metal)
-
-Chairs (metal)
-treadmill
-stationary bike
-rowing machine
-Exercise machine
-
-Fan (metal)
-
-Filing cabinet
-
-Baseboard heater
-furnace motor
-Motor (small)
-kitchen appliance
-exhaust
-Range hood
-laundry sink
-laundry tub
-kitchen
-bathroom
-tub
-Sinks (metal or cast iron)
-
-Table (metal)
-rim
-Tire rims
-wheel barrow
-Wheelbarrow (metal)
-fridge
-household appliance
-bar fridge
+antenna tower
 appliances
-residential bar
-Refrigerator
-range
+bar fridge
+barbeque
+barrel
+baseboard heater
+bath tub
+bathroom
+bathtub (metal)
+bathtubs
+bbq
+bbq grill
+bed frame (metal)
+bed spring
+bicycle
+bike
+chairs (metal)
+chicken wire
+clothes dryer
+coat rack (metal)
+compressor
 cooker
-stove
 cooking plate
 cooktop
-household appliance
-hot plate
-oven
-Stove
-washer
-household appliance
-Washing machine
-drier
-clothes dryer
-Dryer
-dish washer
-household appliance
-Dishwasher
-air cleaner
-electronic air cleaner
-table top humidifier
-Dehumidifier/Humidifier
-deep-freeze
-freezer locker
-frozen food locker
-frigidarium
-household appliances
-Freezer
-
-Vanity (metal)
-BBQ
-BBQ grill
-Barbeque
-bike
-tricycle
-tire
-Bicycle
-metal snow shovel
-Shovel (metal)
-radiator
-electric
-oil-filled
-Oil filled heater
-lawn mower
-Lawnmower (gas, electric or push)
-snowblower
-Snow blower
-
-Antenna tower
-compressor
-pipes
-metal weights
-fireplace grate
-Scrap metal
-
-Wood burning stove
-
-metal mailbox
-
-Bed frame (metal)
-
-coat rack (metal)
-chicken wire
-Fence (wire)
-taps
-pipes
-shower
-stalls
 copper pipe
-Plumbing fixtures-metal
-
-Furnace (all metal)
-
-Satellite dish (metal)
-
-Shed (metal), dismantled
-
-Fireplace (metal)
+deep-freeze
+dehumidifier/humidifier
+dish washer
+dishwasher
+drier
+drum (metal)
+dryer
+electric
+electronic air cleaner
+exchanger
+exercise machine
+exhaust
+fan (metal)
+fence (wire)
+filing cabinet
+fireplace (metal)
+fireplace grate
+freezer
+freezer locker
+fridge
+frigidarium
+frozen food locker
+furnace (all metal)
+furnace motor
+heat pump
+hot plate
+hot water tank (empty)
+household appliance
+household appliances
+ironing board
+kitchen
+kitchen appliance
+laundry pump
+laundry sink
+laundry tub
+lawn mower
+lawnmower (gas, electric or push)
 metal frame hockey net
-Swing set (metal)
-
-Hot water tank (empty)
+metal mailbox
+metal safe
+metal snow shovel
+metal stake
+metal weights
+microwave oven
+microwaves
+motor (small)
+oil filled heater
+oil-filled
+oven
+pipes
+plumbing fixtures-metal
+pump
+radiator
+range
+range hood
+refrigerator
+residential bar
+rim
+roto tiller
+rototiller
+rowing machine
+satellite dish (metal)
 scrap metal
-Metal stake
-
-Water heater
-bath tub
-bathtubs
-Bathtub (metal)
-
-Ironing Board
-
-Bed spring
+sewer pump
+shed (metal), dismantled
+shovel (metal)
+shower
+sinks (metal or cast iron)
+snow blower
+snowblower
+stalls
+stationary bike
+stove
+sump pump
+swing set (metal)
+table (metal)
+table top humidifier
+taps
+tire
+tire rims
+treadmill
+tricycle
+tub
+vanity (metal)
+washer
+washing machine
+water heater
+water pump
+wheel barrow
+wheelbarrow (metal)
+wood burning stove
