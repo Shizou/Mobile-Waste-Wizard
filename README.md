@@ -1,2 +1,2 @@
-# Mobile-Waste-Wizard-
+# Mobile-Waste-Wizard
 Mobile implementation of waste wizard
