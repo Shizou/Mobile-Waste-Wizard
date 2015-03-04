@@ -6,7 +6,7 @@
 #include<algorithm>
 using namespace std;
 
-string s,file = "YW.txt";;
+string s,file = "YW.txt";
 set<string>in;
 
 int main(){
