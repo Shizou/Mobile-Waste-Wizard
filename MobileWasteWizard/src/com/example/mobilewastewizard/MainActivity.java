@@ -5,12 +5,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import com.cloudinary.Cloudinary;
-import com.cloudinary.utils.ObjectUtils;
 
+import android.speech.RecognizerIntent;
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,8 +22,8 @@ import android.view.*;
 import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
-	private static final int REQ_CAPTURE_IMAGE = 0;
-    String imagePath;
+	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
+    String imagePath = "";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,23 +80,41 @@ public class MainActivity extends ActionBarActivity {
         startActivityForResult(intent, REQ_CAPTURE_IMAGE);
 	}
 	
+	public void voice(View view){
+		Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
+       	 try {
+            startActivityForResult(i, REQ_VOICE);
+        } catch (Exception e) {
+       	 	Toast.makeText(this, "Error initializing speech to text engine.", Toast.LENGTH_LONG).show();
+        }
+	}
+	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (requestCode == REQ_CAPTURE_IMAGE && resultCode == RESULT_OK) {
 	    	try {
-				cloudinaryUpload();
+	    		Map<String, String> config = new HashMap<String, String>();
+	    		config.put("cloud_name", "serene17");
+	    		config.put("api_key", "712618266454968");
+	    		config.put("api_secret", "5MmY0HE4maNqLmdugBNFtTo6yBo");
+	    		Cloudinary cloudinary = new Cloudinary(config);
+	    		
+	    		File image = new File(imagePath);
+	    		
+	    		cloudinary.uploader().upload(image, Cloudinary.emptyMap());
 			} catch (IOException e) {}
 	    }
 	    
-	}
-	
-	public void cloudinaryUpload() throws IOException{
-		Map config = new HashMap();
-		config.put("cloud_name", "serene17");
-		config.put("api_key", "712618266454968");
-		config.put("api_secret", "5MmY0HE4maNqLmdugBNFtTo6yBo");
-		Cloudinary cloudinary = new Cloudinary(config);
-		
-		FileInputStream inputStream = null;
-		cloudinary.uploader().upload(inputStream, ObjectUtils.emptyMap());
+	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK){
+	    	ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+	    	String resultStr = result.get(0);
+			Context context = getApplicationContext();
+			CharSequence text = resultStr;
+			int duration = Toast.LENGTH_SHORT;
+
+			Toast toast = Toast.makeText(context, text, duration);
+			toast.show();
+	    }
+	    
 	}
 }
