@@ -97,10 +97,10 @@ public class Database {
 	public String exactQuery(String query){
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
 			int index = findFromDataBase(query,categories.get(i));
-			if(index != -1)
+			if(index >= 0)
 				return categoriesName[i];
 		}
-		return "";
+		return null;
 	}
 	/**Looks through all of the items in the database and returns
 	 * a value which contains a prefix of the queried word
@@ -124,14 +124,16 @@ public class Database {
 	 * the N items which are most similar to the queried string*/
 	public List<String>spellingSuggestions(String query,int N){
 		List<Pair<Integer,String>>list = new ArrayList<Pair<Integer,String>>();
+		List<String>list2 = new ArrayList<String>();
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
 			for(int j = 0;j < this.categories.get(i).size();i++){
 				String s = categories.get(i).get(j);
 				list.add(new Pair<Integer,String>(editDistance(s,query),s));
 			}
 		}
-		//TODO
-		//	Collections.sort(list);
-		return null;
+		Collections.sort(list);
+		for(int i = 0;i < N;i++)
+			list2.add(list.get(i).second);
+		return list2.size() == 0 ? null:list2;
 	}
 }
