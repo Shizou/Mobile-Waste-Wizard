@@ -60,25 +60,16 @@ public class Database {
 		return dp[N][M];
 	}
 	/**Checks whether a pattern is present in a text field
-	 * Time complexity is O(N + K) where N is the length of the 
-	 * text field and k = the query
+	 * Time complexity is O(NM) where N is the length of the 
+	 * text field and M is the query
 	 * @param text text to search pattern from
 	 * @param pattern pattern to search for*/
 	public boolean search(String text,String pattern){
-		int i = 0,j = 0;
-		int []F = new int[pattern.length()];
-		j = F[0] = -1;
-		while(i < pattern.length()){
-			while(j >= 0 && pattern.charAt(i) != pattern.charAt(j))
-					j = F[j];
-			i++;j++;
-			F[i] = (pattern.charAt(i)==pattern.charAt(j)) ? F[j]:j;
-		}
-		i = j = 0;
-		while(j < text.length()){
-			while(i >= 0 && pattern.charAt(i) != text.charAt(j))i = F[i];
-			i++;j++;
-			if(i >= pattern.length())return true;
+		for(int i = 0;i < text.length();i++){
+			for(int j = 0;j < pattern.length();j++){
+				if(text.charAt(i+j)!=pattern.charAt(j))break;
+				if(j == pattern.length()-1)return true;
+			}
 		}
 		return false;
 	}
