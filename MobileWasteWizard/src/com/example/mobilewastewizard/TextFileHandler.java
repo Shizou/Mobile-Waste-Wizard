@@ -1,3 +1,8 @@
+/** Name: Burhan, Justin, William
+ *  Date: 24/03/15
+ *  Purpose: Handles the reading in from database
+ * */
+
 package com.example.mobilewastewizard;
 
 import java.io.File;
@@ -7,10 +12,11 @@ import java.util.Scanner;
 
 public class TextFileHandler {
 	
-	final int CATEGORIES_SIZE = 10;
-	List<List<String>> categories = new ArrayList<List<String>>();
-	Scanner sc;
+	private final int CATEGORIES_SIZE = 10;
+	private List<List<String>> categories = new ArrayList<List<String>>();
+	private Scanner sc;
 	
+	/**Initializes categories by reading them from file.*/
 	public TextFileHandler(){
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++)// create the new categories
 			this.categories.add(new ArrayList<String>());

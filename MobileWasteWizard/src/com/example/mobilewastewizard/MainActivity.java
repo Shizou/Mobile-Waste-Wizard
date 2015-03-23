@@ -24,7 +24,9 @@ import android.widget.*;
 public class MainActivity extends ActionBarActivity {
 	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
     String imagePath = "";
-	@Override
+    Database database = new Database();
+    
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
@@ -51,12 +53,30 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void getQuery(View view){
 		EditText searchQuery = (EditText)findViewById(R.id.search);
-		
 		Context context = getApplicationContext();
 		CharSequence text = searchQuery.getText();
 		int duration = Toast.LENGTH_SHORT;
-
+		String query = database.exactQuery(text.toString());
 		Toast toast = Toast.makeText(context, text, duration);
+		if(query!=null){
+			toast = Toast.makeText(context, query, duration);
+		}
+		else{
+			// TODO suggestions based on words
+			List<String>suggestions = database.suggestions(query);
+			if(suggestions!=null){
+				// Do something like this
+				query = "";
+				for(int i = 0;i < suggestions.size();i++){
+					query+=suggestions.get(i)+'\n';
+				}
+				toast = Toast.makeText(context, query, duration);
+			}
+			else{// TODO try suggestions based on edit distance
+				suggestions = database.spellingSuggestions(query, 10);
+			}
+			
+		}
 		toast.show();
 	}
 	

@@ -1,3 +1,7 @@
+/** Name: Burhan, Justin, William
+ *  Date: 24/03/15
+ *  Purpose: Handles queries to the database
+ * */
 package com.example.mobilewastewizard;
 
 import java.util.ArrayList;
@@ -6,11 +10,12 @@ import java.util.List;
 
 public class Database {
 	
-	final int CATEGORIES_SIZE = 10;
-	String categoriesName[];
-	List<List<String>> categories;
-	TextFileHandler textFileSupport = new TextFileHandler();
+	private final int CATEGORIES_SIZE = 10;
+	private String categoriesName[];
+	private List<List<String>> categories;
+	private TextFileHandler textFileSupport = new TextFileHandler();
 	
+	/**Initializes the database*/
 	public Database() {
 		this.textFileSupport = new TextFileHandler();
 		this.categoriesName = new String[this.CATEGORIES_SIZE];
@@ -65,6 +70,7 @@ public class Database {
 	 * @param text text to search pattern from
 	 * @param pattern pattern to search for*/
 	public boolean search(String text,String pattern){
+		// TODO use KMP algorithm for faster run times
 		for(int i = 0;i < text.length();i++){
 			for(int j = 0;j < pattern.length();j++){
 				if(text.charAt(i+j)!=pattern.charAt(j))break;
