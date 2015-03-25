@@ -19,7 +19,7 @@ public class Pair<F extends Comparable<F>,S extends Comparable<S>> implements Co
 	 * Compares first item before second item.
 	 * @param arg0 pair to be compared too*/
 	public int compareTo(Pair<F,S> arg0) {
-		int fCompare = -this.first.compareTo(arg0.first);
+		int fCompare = this.first.compareTo(arg0.first);
 		int sCompare = this.second.compareTo(arg0.second);
 		return fCompare == 0 ? sCompare:fCompare;
 	}

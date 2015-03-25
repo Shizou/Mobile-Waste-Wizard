@@ -100,10 +100,7 @@ public class MainActivity extends ActionBarActivity {
 			toast = Toast.makeText(context, bin, duration);
 		}
 		else{// attempt to give suggestions
-			List<String>suggestions = database.secondaryQuery(query); 	// checks if parts of the query partially match values in the database
-		//	if(suggestions==null)// query does not resemble anything in the database
-			//	suggestions = database.tertiaryQuery(query);
-			
+			List<String>suggestions = database.secondaryQuery(query); 	// finds the most relvant matches in the database	
 			if(suggestions == null){
 				bin = "no bin";
 				toast = Toast.makeText(context, bin, duration);

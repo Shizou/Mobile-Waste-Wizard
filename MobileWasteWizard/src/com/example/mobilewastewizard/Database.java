@@ -96,42 +96,30 @@ public class Database {
 		return null;
 	}
 	/**Looks through all of the items in the database and returns
-	 * a value which contains a prefix of the queried word
+	 * values which are most similar to the query. First checks for
+	 * values that contain the parts of the query then checks their
+	 * edit distance
 	 * @param query string to be queried*/
 	public List<String>secondaryQuery(String query){
-		List< Pair<Integer,String> >list = new ArrayList< Pair<Integer,String> >();
+		List< String >list = new ArrayList< String >();
+		List< Pair<Integer,String> >list2 = new ArrayList< Pair<Integer,String> >();
 		List<String>suggestions = new ArrayList<String>();
-		String splitted[] = query.split("\\s+");
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
-			for(int j = 0,cnt = 0;j < this.categories.get(i).size();j++){
-				for(int k = 0;k < splitted.length;k++)
-					if(categories.get(i).get(j).contains(splitted[k]))
-						cnt++;
-				if(cnt!=0)
-					list.add(new Pair<Integer,String>(cnt,categories.get(i).get(j)));
+			for(int j = 0;j < this.categories.get(i).size();j++){
+				if(categories.get(i).get(j).contains(query)){
+					list.add(categories.get(i).get(j));
+					break;
+				}						
 			}
 		}
 		Collections.sort(list);
 		for(int i = 0;i < this.LIMIT && i < list.size();i++){
-			suggestions.add(list.get(i).second);
+			list2.add(new Pair<Integer,String>(editDistance(list.get(i),query), list.get(i)));
 		}
-		return suggestions.size() == 0 ? null:suggestions;
-	}
-	/**Looks through all of the items in the database and returns the first 10 items which are most similar to the queried string.
-	 * String similarity is determined by their edit distance.
-	 * */
-	public List<String>tertiaryQuery(String query){
-		List<Pair<Integer,String>>list = new ArrayList<Pair<Integer,String>>();
-		List<String>suggestions = new ArrayList<String>();
-		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
-			for(int j = 0;j < this.categories.get(i).size();j++){
-				String s = categories.get(i).get(j);
-				list.add(new Pair<Integer,String>(editDistance(s,query),s));
-			}
+		Collections.sort(list2);
+		for(int i = 0;i < this.LIMIT && i < list2.size();i++){
+			suggestions.add(list2.get(i).second);
 		}
-		Collections.sort(list);
-		for(int i = 0;i < this.LIMIT;i++)
-			suggestions.add(list.get(i).second);
 		return suggestions.size() == 0 ? null:suggestions;
 	}
 }
