@@ -1,5 +1,5 @@
-/** Name: Burhan, Justin, William
- *  Date: 24/03/15
+/** Name: Burhan Qadri, Justin Li, William Granados
+ *  Date: 25/03/15
  *  Purpose: Handles queries to the database
  * */
 package com.example.mobilewastewizard;
@@ -8,16 +8,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.content.Context;
+
 public class Database {
 	
-	private final int CATEGORIES_SIZE = 10;
+	private final int CATEGORIES_SIZE = 10, LIMIT = 20;
 	private String categoriesName[];
 	private List<List<String>> categories;
-	private TextFileHandler textFileSupport = new TextFileHandler();
-	
-	/**Initializes the database*/
-	public Database() {
-		this.textFileSupport = new TextFileHandler();
+	private TextFileHandler textFileSupport;
+
+	/**Initializes the database
+	 * @param cxt the context from which this class acquires privileges for the assets folder (in this case main activity)*/
+	public Database(Context cxt) {
+		this.textFileSupport = new TextFileHandler(cxt);
 		this.categoriesName = new String[this.CATEGORIES_SIZE];
 		this.categories = textFileSupport.getCategories();
 		this.categoriesName[0] = "Blue Bin";
@@ -29,8 +32,9 @@ public class Database {
 		this.categoriesName[6] = "Oversized Waste";
 		this.categoriesName[7] = "Prohibited Waste";
 		this.categoriesName[8] = "Scrap Metal";
-		this.categoriesName[8] = "Yard Waste";
+		this.categoriesName[9] = "Yard Waste";
 	}
+
 	
 	/**Returns whether true if the ith character in string
 	 * A is the same as the jth character in string B.
@@ -47,10 +51,10 @@ public class Database {
 	 * @param A first string
 	 * @param B second string  */
 	public int editDistance(String A,String B){
-		int N = A.length()-1, M = B.length()-1,inf = 1000000;
+		int N = A.length(), M = B.length(),inf = 1000000;
 		int [][]dp = new int[N][M];
-		for(int i = 0;i <= N;i++)
-			for(int j = 0;j <= M;j++)
+		for(int i = 0;i < N;i++)
+			for(int j = 0;j < M;j++)
 				dp[i][j] = inf;
 		for(int i = 0;i < N;i++){
 			for(int j = 0;j < M;j++){
@@ -62,7 +66,7 @@ public class Database {
 					dp[i][j] = Math.min(dp[i-1][j-1]+diff(A,B,i-1,j-1), Math.min(dp[i-1][j]+1,dp[i][j-1]+1) );
 			}
 		}
-		return dp[N][M];
+		return dp[N-1][M-1];
 	}
 	/**Checks whether a pattern is present in a text field
 	 * Time complexity is O(NM) where N is the length of the 
@@ -77,23 +81,15 @@ public class Database {
 				if(j == pattern.length()-1)return true;
 			}
 		}
-		return false;
+		return text.contains(pattern);
 	}
-	
-	/**Does a binary search on a list  to checker whether a given string
-	 * is within the list. Time complexity is O(logN) where N is the amount
-	 * of elements in the list.
-	 * @param A string to be searched for
-	 * @param list list to be searched for*/
-	public int findFromDataBase(String A,List<String>list){
-		return Collections.binarySearch(list, A);
-	}
-	
+		
 	/**Looks through the entire database looking for an exact match
+	 * Uses binary search so find the query
 	 * @param query string to be queried*/
-	public String exactQuery(String query){
+	public String initialQuery(String query){
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
-			int index = findFromDataBase(query,categories.get(i));
+			int index = Collections.binarySearch(categories.get(i), query);
 			if(index >= 0)
 				return categoriesName[i];
 		}
@@ -102,35 +98,40 @@ public class Database {
 	/**Looks through all of the items in the database and returns
 	 * a value which contains a prefix of the queried word
 	 * @param query string to be queried*/
-	public List<String>suggestions(String query){
-		List<String>list = new ArrayList<String>();
+	public List<String>secondaryQuery(String query){
+		List< Pair<Integer,String> >list = new ArrayList< Pair<Integer,String> >();
+		List<String>suggestions = new ArrayList<String>();
 		String splitted[] = query.split("\\s+");
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
-			for(int j = 0;j < this.categories.get(i).size();i++){
-				for(int k = 0;k < splitted.length;k++){
-					if(search(categories.get(i).get(j),splitted[k])){
-						list.add(categories.get(i).get(j));
-						break;
-					}
-				}
+			for(int j = 0,cnt = 0;j < this.categories.get(i).size();j++){
+				for(int k = 0;k < splitted.length;k++)
+					if(categories.get(i).get(j).contains(splitted[k]))
+						cnt++;
+				if(cnt!=0)
+					list.add(new Pair<Integer,String>(cnt,categories.get(i).get(j)));
 			}
 		}
-		return list.size() != 0 ? list:null;
+		Collections.sort(list);
+		for(int i = 0;i < this.LIMIT;i++){
+			suggestions.add(list.get(i).second);
+		}
+		return suggestions.size() == 0 ? null:suggestions;
 	}
-	/**Looks through all of the items in the database and returns
-	 * the N items which are most similar to the queried string*/
-	public List<String>spellingSuggestions(String query,int N){
+	/**Looks through all of the items in the database and returns the first 10 items which are most similar to the queried string.
+	 * String similarity is determined by their edit distance.
+	 * */
+	public List<String>tertiaryQuery(String query){
 		List<Pair<Integer,String>>list = new ArrayList<Pair<Integer,String>>();
-		List<String>list2 = new ArrayList<String>();
+		List<String>suggestions = new ArrayList<String>();
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++){
-			for(int j = 0;j < this.categories.get(i).size();i++){
+			for(int j = 0;j < this.categories.get(i).size();j++){
 				String s = categories.get(i).get(j);
 				list.add(new Pair<Integer,String>(editDistance(s,query),s));
 			}
 		}
 		Collections.sort(list);
-		for(int i = 0;i < N;i++)
-			list2.add(list.get(i).second);
-		return list2.size() == 0 ? null:list2;
+		for(int i = 0;i < this.LIMIT;i++)
+			suggestions.add(list.get(i).second);
+		return suggestions.size() == 0 ? null:suggestions;
 	}
 }

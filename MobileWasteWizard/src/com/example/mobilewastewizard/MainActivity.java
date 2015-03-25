@@ -1,10 +1,12 @@
+/** Name: Burhan Qadri, Justin Li, William Granados
+ *  Date: 25/03/15
+ *  Purpose: user interface
+ * */
 package com.example.mobilewastewizard;
 
+
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 import com.cloudinary.Cloudinary;
@@ -23,14 +25,15 @@ import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
 	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
-    String imagePath = "";
-    Database database = new Database();
+    private String imagePath = "";
+    private Database database;
     
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
+		this.database = new Database(this);
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -56,26 +59,30 @@ public class MainActivity extends ActionBarActivity {
 		Context context = getApplicationContext();
 		CharSequence text = searchQuery.getText();
 		int duration = Toast.LENGTH_SHORT;
-		String query = database.exactQuery(text.toString());
 		Toast toast = Toast.makeText(context, text, duration);
-		if(query!=null){
-			toast = Toast.makeText(context, query, duration);
+	
+		// handles queries
+		String query = text.toString();
+		String bin = database.initialQuery(query);
+		if(bin!=null){// query matches a value in the database
+			toast = Toast.makeText(context, bin, duration);
 		}
-		else{
-			// TODO suggestions based on words
-			List<String>suggestions = database.suggestions(query);
-			if(suggestions!=null){
-				// Do something like this
-				query = "";
-				for(int i = 0;i < suggestions.size();i++){
-					query+=suggestions.get(i)+'\n';
-				}
-				toast = Toast.makeText(context, query, duration);
-			}
-			else{// TODO try suggestions based on edit distance
-				suggestions = database.spellingSuggestions(query, 10);
-			}
+		else{// attempt to give suggestions
+			List<String>suggestions = database.secondaryQuery(query); 	// checks if parts of the query partially match values in the database
+		//	if(suggestions==null)// query does not resemble anything in the database
+			//	suggestions = database.tertiaryQuery(query);
 			
+			if(suggestions == null){
+				bin = "no bin";
+				toast = Toast.makeText(context, bin, duration);
+			}
+			else{
+				bin = "";
+				for(int i = 0;i < suggestions.size();i++){
+					bin+= "Did you mean:" + suggestions.get(i)+"?\n";
+				}
+				toast = Toast.makeText(context, bin, duration);
+			}
 		}
 		toast.show();
 	}
