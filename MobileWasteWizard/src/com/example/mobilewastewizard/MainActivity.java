@@ -56,13 +56,45 @@ public class MainActivity extends ActionBarActivity {
 	
 	public void getQuery(View view){
 		EditText searchQuery = (EditText)findViewById(R.id.search);
-		Context context = getApplicationContext();
+//		Context context = getApplicationContext();
 		CharSequence text = searchQuery.getText();
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, text, duration);
+//		int duration = Toast.LENGTH_SHORT;
+//		Toast toast = Toast.makeText(context, text, duration);
 	
 		// handles queries
 		String query = text.toString();
+		
+		showResult(query);
+		
+/*		String bin = database.initialQuery(query);
+		if(bin!=null){// query matches a value in the database
+			toast = Toast.makeText(context, bin, duration);
+		}
+		else{// attempt to give suggestions
+			List<String>suggestions = database.secondaryQuery(query); 	// checks if parts of the query partially match values in the database
+		//	if(suggestions==null)// query does not resemble anything in the database
+			//	suggestions = database.tertiaryQuery(query);
+			
+			if(suggestions == null){
+				bin = "no bin";
+				toast = Toast.makeText(context, bin, duration);
+			}
+			else{
+				bin = "";
+				for(int i = 0;i < suggestions.size();i++){
+					bin+= "Did you mean:" + suggestions.get(i)+"?\n";
+				}
+				toast = Toast.makeText(context, bin, duration);
+			}
+		}
+		toast.show();	*/
+	}
+	
+	public void showResult(String query){
+		int duration = Toast.LENGTH_SHORT;
+		Context context = getApplicationContext();
+		Toast toast;
+		
 		String bin = database.initialQuery(query);
 		if(bin!=null){// query matches a value in the database
 			toast = Toast.makeText(context, bin, duration);
@@ -118,6 +150,7 @@ public class MainActivity extends ActionBarActivity {
 	}
 	
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		//handles camera results
 	    if (requestCode == REQ_CAPTURE_IMAGE && resultCode == RESULT_OK) {
 	    	try {
 	    		Map<String, String> config = new HashMap<String, String>();
@@ -132,15 +165,11 @@ public class MainActivity extends ActionBarActivity {
 			} catch (IOException e) {}
 	    }
 	    
+	    //handles voice results
 	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK){
 	    	ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-	    	String resultStr = result.get(0);
-			Context context = getApplicationContext();
-			CharSequence text = resultStr;
-			int duration = Toast.LENGTH_SHORT;
-
-			Toast toast = Toast.makeText(context, text, duration);
-			toast.show();
+	    	String query = result.get(0);
+	    	showResult(query);
 	    }
 	    
 	}

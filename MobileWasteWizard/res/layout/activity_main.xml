@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/searchButton"
         android:layout_below="@+id/searchButton"
-        android:onClick="voice"
-        android:text="Button" />
+        android:onClick="v"
+        android:text="voice" />
 
     <Button
         android:id="@+id/cameraButton"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/voiceButton"
         android:layout_below="@+id/voiceButton"
-        android:text="Button"
+        android:text="c"
         android:onClick="camera" />
 
 </RelativeLayout>

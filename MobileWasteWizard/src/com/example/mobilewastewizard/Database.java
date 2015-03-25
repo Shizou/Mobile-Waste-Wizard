@@ -112,7 +112,7 @@ public class Database {
 			}
 		}
 		Collections.sort(list);
-		for(int i = 0;i < this.LIMIT;i++){
+		for(int i = 0;i < this.LIMIT && i < list.size();i++){
 			suggestions.add(list.get(i).second);
 		}
 		return suggestions.size() == 0 ? null:suggestions;
