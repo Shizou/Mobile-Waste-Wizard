@@ -33,6 +33,12 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.database = new Database(this);
+		
+		List<String> autoCompleteList = database.getTotalList();
+		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, autoCompleteList);
+		AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
+		actv.setAdapter(adapter);
+		
     }
 
 	@Override

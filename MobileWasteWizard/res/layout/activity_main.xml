@@ -19,7 +19,7 @@
         android:textSize="32dp"
         android:text="Waste Wizard" />
 
-    <Button
+<!--    <Button
         android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,17 +27,7 @@
         android:layout_alignRight="@+id/searchButton"
         android:layout_below="@+id/searchButton"
         android:onClick="camera"
-        android:text="c" />
-
-    <Button
-        android:id="@+id/voiceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/searchButton"
-        android:layout_alignRight="@+id/cameraButton"
-        android:layout_below="@+id/cameraButton"
-        android:onClick="voice"
-        android:text="v" />
+        android:text="c" /> -->
 
     <AutoCompleteTextView
         android:id="@+id/search"
@@ -46,6 +36,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:ems="10"
+        android:dropDownHeight="250dp"
         android:text="" />
 
     <Button
@@ -57,5 +48,15 @@
         android:layout_below="@+id/search"
         android:onClick="getQuery"
         android:text="Go" />
+
+    <Button
+        android:id="@+id/voiceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/searchButton"
+        android:layout_alignRight="@+id/searchButton"
+        android:layout_below="@+id/searchButton"
+        android:onClick="voice"
+        android:text="v" />
 
 </RelativeLayout>

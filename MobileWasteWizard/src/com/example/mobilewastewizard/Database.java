@@ -122,4 +122,13 @@ public class Database {
 		}
 		return suggestions.size() == 0 ? null:suggestions;
 	}
+	
+	public List<String> getTotalList(){
+		List<String> totalList = new ArrayList<String>();
+		for(int i = 0; i < CATEGORIES_SIZE; i++){
+			totalList.addAll(categories.get(i));
+		}
+		
+		return totalList;
+	}
 }
