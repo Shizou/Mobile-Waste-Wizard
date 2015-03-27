@@ -6,6 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
     tools:context="com.example.mobilewastewizard.MainActivity" >
 
     <TextView
@@ -15,41 +16,46 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
+        android:textSize="32dp"
         android:text="Waste Wizard" />
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:ems="10" />
-
     <Button
-        android:id="@+id/searchButton"
+        android:id="@+id/cameraButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_below="@+id/search"
-        android:onClick="getQuery"
-        android:text="Go" />
+        android:layout_alignLeft="@+id/searchButton"
+        android:layout_alignRight="@+id/searchButton"
+        android:layout_below="@+id/searchButton"
+        android:onClick="camera"
+        android:text="c" />
 
     <Button
         android:id="@+id/voiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/searchButton"
-        android:layout_below="@+id/searchButton"
+        android:layout_alignRight="@+id/cameraButton"
+        android:layout_below="@+id/cameraButton"
         android:onClick="voice"
         android:text="v" />
 
-    <Button
-        android:id="@+id/cameraButton"
+    <AutoCompleteTextView
+        android:id="@+id/search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/voiceButton"
-        android:layout_below="@+id/voiceButton"
-        android:text="c"
-        android:onClick="camera" />
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:text="" />
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/search"
+        android:onClick="getQuery"
+        android:text="Go" />
 
 </RelativeLayout>
