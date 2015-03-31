@@ -57,6 +57,6 @@
         android:layout_alignRight="@+id/searchButton"
         android:layout_below="@+id/searchButton"
         android:onClick="voice"
-        android:text="v" />
+        android:text="v" /> 
 
 </RelativeLayout>
