@@ -13,6 +13,7 @@ public class TextFileHandler extends ActionBarActivity  {
 	
 	private final int CATEGORIES_SIZE = 10;
 	private List<List<String>> categories = new ArrayList<List<String>>();
+	private List<String>totalList = new ArrayList<String>();
 	
 	/**Initializes categories by reading them from file.
 	 * @param cxt the context from which this class acquires privileges for the assets folder (in this case main activity)*/
@@ -29,6 +30,7 @@ public class TextFileHandler extends ActionBarActivity  {
 		this.openCategoryFile(cxt,"categories/PW.txt", 		categories.get(7));
 		this.openCategoryFile(cxt,"categories/SM.txt", 		categories.get(8));
 		this.openCategoryFile(cxt,"categories/YW.txt", 		categories.get(9));
+		Collections.sort(totalList);
 	}
 
 	/**Opens a file and returns contents from it into an array list
@@ -42,6 +44,7 @@ public class TextFileHandler extends ActionBarActivity  {
 			String 			  line = br.readLine();
 			while(line!=null){
 				list.add(line);
+				totalList.add(line);
 				line = br.readLine();
 			}
 		} catch (IOException e) {
@@ -52,5 +55,9 @@ public class TextFileHandler extends ActionBarActivity  {
 	/**Returns the categories which contain the items*/
 	public List<List<String>> getCategories(){
 		return this.categories;
+	}
+	/**Returns the total list which contains all the items*/
+	public List<String>getTotalList(){
+		return this.totalList;
 	}
 }

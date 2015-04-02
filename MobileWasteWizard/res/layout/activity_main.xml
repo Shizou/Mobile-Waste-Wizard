@@ -57,6 +57,27 @@
         android:layout_alignRight="@+id/searchButton"
         android:layout_below="@+id/searchButton"
         android:onClick="voice"
-        android:text="v" /> 
+        android:text="v" />
+
+    <Button
+        android:id="@+id/databaseButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="15dp"
+        android:text="Database"
+        android:onClick="toDatabase" />
+
+    <Button
+        android:id="@+id/findBinButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/voiceButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/voiceButton"
+        android:text="FIND BIN"
+        android:onClick="findBin" />
 
 </RelativeLayout>

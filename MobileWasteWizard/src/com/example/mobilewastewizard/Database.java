@@ -15,6 +15,7 @@ public class Database {
 	private final int CATEGORIES_SIZE = 10, LIMIT = 20;
 	private String categoriesName[];
 	private List<List<String>> categories;
+	private List<String> totalList;
 	private TextFileHandler textFileSupport;
 
 	/**Initializes the database
@@ -23,6 +24,7 @@ public class Database {
 		this.textFileSupport = new TextFileHandler(cxt);
 		this.categoriesName = new String[this.CATEGORIES_SIZE];
 		this.categories = textFileSupport.getCategories();
+		this.totalList = textFileSupport.getTotalList();
 		this.categoriesName[0] = "Blue Bin";
 		this.categoriesName[1] = "Bring to Transfer Station/Waste Depot";
 		this.categoriesName[2] = "E-Waste";
@@ -124,11 +126,6 @@ public class Database {
 	}
 	
 	public List<String> getTotalList(){
-		List<String> totalList = new ArrayList<String>();
-		for(int i = 0; i < CATEGORIES_SIZE; i++){
-			totalList.addAll(categories.get(i));
-		}
-		
-		return totalList;
+		return this.totalList;
 	}
 }
