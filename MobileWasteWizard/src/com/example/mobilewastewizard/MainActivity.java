@@ -13,9 +13,12 @@ import com.cloudinary.Cloudinary;
 
 import android.speech.RecognizerIntent;
 import android.support.v7.app.ActionBarActivity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,15 +30,14 @@ public class MainActivity extends ActionBarActivity {
 	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
     private String imagePath = "";
     private Database database;
-    
-    @Override
+   
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.database = new Database(this);
 		
 		List<String> autoCompleteList = database.getTotalList();
-		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1, autoCompleteList);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, autoCompleteList);
 		AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
 		actv.setAdapter(adapter);
 		
@@ -60,6 +62,7 @@ public class MainActivity extends ActionBarActivity {
 		String bin = database.initialQuery(query);
 		if(bin!=null){// query matches a value in the database
 			toast = Toast.makeText(context, bin, duration);
+//			showImageResult(bin);
 		}
 		else{// attempt to give suggestions
 			List<String>suggestions = database.secondaryQuery(query); 	// finds the most relvant matches in the database	
@@ -76,6 +79,30 @@ public class MainActivity extends ActionBarActivity {
 			}
 		}
 		toast.show();
+	}
+	
+	public void showImageResult(String bin){ //builds popup window with image of bin result
+		Dialog builder = new Dialog(this);
+	    builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    builder.getWindow().setBackgroundDrawable(
+	        new ColorDrawable(android.graphics.Color.TRANSPARENT));
+	    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+	        @Override
+	        public void onDismiss(DialogInterface dialogInterface) {
+	        	
+	        }
+	    });
+	    
+	    String imagePath = "assets/images/img " + bin + ".png";
+	    File file = new File(imagePath);
+	    Uri imageUri = Uri.fromFile(file);
+
+	    ImageView imageView = new ImageView(this);
+	    imageView.setImageURI(imageUri);
+	    builder.addContentView(imageView, new RelativeLayout.LayoutParams(
+	            ViewGroup.LayoutParams.MATCH_PARENT, 
+	            ViewGroup.LayoutParams.MATCH_PARENT));
+	    builder.show();
 	}
 	
 	public void camera(View view) throws IOException{
