@@ -5,25 +5,18 @@
 package com.example.mobilewastewizard;
 
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
-
-import com.cloudinary.Cloudinary;
 
 import android.speech.RecognizerIntent;
 import android.support.v7.app.ActionBarActivity;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.*;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
@@ -31,18 +24,29 @@ public class MainActivity extends ActionBarActivity {
     private String imagePath = "";
     private Database database;
    
+    /**Initializes the main activity, fills auto-complete suggestions with database items. 
+     */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.database = new Database(this);
 		
+		//fills the auto-complete selections
 		List<String> autoCompleteList = database.getTotalList();
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, autoCompleteList);
 		AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
 		actv.setAdapter(adapter);
 		
-    }
+		//receives query if coming from database activity
+		Intent intent = getIntent();
+		if(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM) != "")
+			actv.setText(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM));
+	}
 
+	/**
+	 * Gets the query from the input.
+	 * @param view
+	 */
 	public void getQuery(View view){
 		EditText searchQuery = (EditText)findViewById(R.id.search);
 
@@ -51,18 +55,21 @@ public class MainActivity extends ActionBarActivity {
 		String query = text.toString();
 		
 		showResult(query);
-
 	}
 	
+	/**
+	 * Searches the database for query. If found, displays an image for the resulting bin. If not, displays 
+	 * possible items from the database close to the initial query.
+	 * @param query Item to be searched for.
+	 */
 	public void showResult(String query){
-		int duration = Toast.LENGTH_SHORT;
+		int duration = Toast.LENGTH_LONG;
 		Context context = getApplicationContext();
-		Toast toast;
-		
 		String bin = database.initialQuery(query);
+		Toast toast = Toast.makeText(context, bin, duration);
 		if(bin!=null){// query matches a value in the database
-			toast = Toast.makeText(context, bin, duration);
-//			showImageResult(bin);
+			toast.show();
+			showImageResult(bin);
 		}
 		else{// attempt to give suggestions
 			List<String>suggestions = database.secondaryQuery(query); 	// finds the most relvant matches in the database	
@@ -81,50 +88,48 @@ public class MainActivity extends ActionBarActivity {
 		toast.show();
 	}
 	
-	public void showImageResult(String bin){ //builds popup window with image of bin result
-		Dialog builder = new Dialog(this);
-	    builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-	    builder.getWindow().setBackgroundDrawable(
-	        new ColorDrawable(android.graphics.Color.TRANSPARENT));
-	    builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-	        @Override
-	        public void onDismiss(DialogInterface dialogInterface) {
-	        	
-	        }
-	    });
-	    
-	    String imagePath = "assets/images/img " + bin + ".png";
-	    File file = new File(imagePath);
-	    Uri imageUri = Uri.fromFile(file);
+	/**
+	 * Displays a pop-up window with an image for the corresponding result.
+	 * @param bin The resulting bin from the search results.
+	 */
+	public void showImageResult(String bin){
+		//builds pop-up window
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+		View popupView = layoutInflater.inflate(R.layout.result_popup, null);
+		final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		
+		//displays result bin
+        TextView resultText = (TextView)popupView.findViewById(R.id.resultText);
+        resultText.setText(bin);
+		
+		bin = bin.replace(' ', '_');
 
-	    ImageView imageView = new ImageView(this);
-	    imageView.setImageURI(imageUri);
-	    builder.addContentView(imageView, new RelativeLayout.LayoutParams(
-	            ViewGroup.LayoutParams.MATCH_PARENT, 
-	            ViewGroup.LayoutParams.MATCH_PARENT));
-	    builder.show();
+		//gets image from assets folder
+		InputStream is = null;
+		try {
+			is = getAssets().open("images/img_" + bin + ".png");
+		} catch (IOException e) {
+			System.out.println("images/img_" + bin + ".png");
+		}
+		
+		ImageView result = (ImageView)popupView.findViewById(R.id.resultImg);
+        result.setImageBitmap(BitmapFactory.decodeStream(is));
+        
+        //initializes dismiss button for pop-up
+        Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
+        btnDismiss.setOnClickListener(new Button.OnClickListener(){
+			public void onClick(View v) {
+				popupWindow.dismiss();
+			}});
+        
+        //displays the pop-up
+        popupWindow.showAsDropDown((AutoCompleteTextView)findViewById(R.id.search), 0, 0);
 	}
 	
-	public void camera(View view) throws IOException{
-		String imageDirectoryStr = Environment.getExternalStorageDirectory() + File.separator + "temp";
-        File imageDirectory = new File(imageDirectoryStr);
-
-        if (!(imageDirectory.exists())) {
-            imageDirectory.mkdir();
-        }
-
-        imagePath = imageDirectoryStr + File.separator + "temp.jpg";   
-
-        File file = new File(imagePath);   
-        Uri outputFileUri = Uri.fromFile(file);
-
-        Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.PNG.toString());
-        startActivityForResult(intent, REQ_CAPTURE_IMAGE);
-	}
-	
+	/**
+	 * Receives a query from the built in speech recognition engine 
+	 * @param view
+	 */
 	public void voice(View view){
 		Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
@@ -135,22 +140,11 @@ public class MainActivity extends ActionBarActivity {
         }
 	}
 	
+	/**
+	 * Passes the recognized speech into the query search.
+	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		//handles camera results
-	    if (requestCode == REQ_CAPTURE_IMAGE && resultCode == RESULT_OK) {
-	    	try {
-	    		Map<String, String> config = new HashMap<String, String>();
-	    		config.put("cloud_name", "serene17");
-	    		config.put("api_key", "712618266454968");
-	    		config.put("api_secret", "5MmY0HE4maNqLmdugBNFtTo6yBo");
-	    		Cloudinary cloudinary = new Cloudinary(config);
-	    		
-	    		File image = new File(imagePath);
-	    		
-	    		cloudinary.uploader().upload(image, Cloudinary.emptyMap());
-			} catch (IOException e) {}
-	    }
-	    
+
 	    //handles voice results
 	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK){
 	    	ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
@@ -160,6 +154,10 @@ public class MainActivity extends ActionBarActivity {
 	    
 	}
 	
+	/**
+	 * Switches to the database activity for manual search.
+	 * @param view
+	 */
 	public void toDatabase(View view){
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);

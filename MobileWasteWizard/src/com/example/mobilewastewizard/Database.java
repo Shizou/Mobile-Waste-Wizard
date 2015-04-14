@@ -26,7 +26,7 @@ public class Database {
 		this.categories = textFileSupport.getCategories();
 		this.totalList = textFileSupport.getTotalList();
 		this.categoriesName[0] = "Blue Bin";
-		this.categoriesName[1] = "Bring to Transfer Station/Waste Depot";
+		this.categoriesName[1] = "Bring to Transfer Station or Waste Depot";
 		this.categoriesName[2] = "E-Waste";
 		this.categoriesName[3] = "Green Bin";
 		this.categoriesName[4] = "Grey Bin - Garbage";
