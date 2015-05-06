@@ -11,19 +11,23 @@ import java.util.*;
 
 import android.speech.RecognizerIntent;
 import android.support.v7.app.ActionBarActivity;
+import android.text.format.Time;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.*;
 import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
 public class MainActivity extends ActionBarActivity {
 	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
     private String imagePath = "";
     private Database database;
+    private PopupWindow popupWindow;
    
     /**Initializes the main activity, fills auto-complete suggestions with database items. 
      */
@@ -56,7 +60,11 @@ public class MainActivity extends ActionBarActivity {
 		// handles queries
 		String query = text.toString();
 		
-		showResult(query);
+		if(popupWindow != null)
+			popupWindow.dismiss();
+		if(!query.equals(""))
+			showResult(query);
+		hideSoftKeyBoard();
 	}
 	
 	/**
@@ -101,7 +109,7 @@ public class MainActivity extends ActionBarActivity {
 		//builds pop-up window
 		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
 		View popupView = layoutInflater.inflate(R.layout.result_popup, null);
-		final PopupWindow popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		
 		//displays result bin
         TextView resultText = (TextView)popupView.findViewById(R.id.resultText);
@@ -127,8 +135,12 @@ public class MainActivity extends ActionBarActivity {
 				popupWindow.dismiss();
 			}});
         
+        popupWindow.setBackgroundDrawable(null);
+        
+        AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.search);
+        
         //displays the pop-up
-        popupWindow.showAsDropDown((AutoCompleteTextView)findViewById(R.id.search), 0, 0);
+        popupWindow.showAsDropDown(actv, 0, 0);
 	}
 	
 	/**
@@ -167,6 +179,14 @@ public class MainActivity extends ActionBarActivity {
 	public void toDatabase(View view){
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
+	}
+	
+	private void hideSoftKeyBoard() {
+	    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+
+	    if(imm.isAcceptingText()) { // verify if the soft keyboard is open                      
+	        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+	    }
 	}
 
 }
