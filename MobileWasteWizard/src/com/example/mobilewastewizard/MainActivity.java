@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.*;
 import android.view.ViewGroup.LayoutParams;
@@ -41,6 +42,7 @@ public class MainActivity extends ActionBarActivity {
 		Intent intent = getIntent();
 		if(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM) != "")
 			actv.setText(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM));
+		
 	}
 
 	/**
@@ -70,6 +72,9 @@ public class MainActivity extends ActionBarActivity {
 		if(bin!=null){// query matches a value in the database
 			toast.show();
 			showImageResult(bin);
+			
+			MediaPlayer mp = MediaPlayer.create(context, R.raw.ding);
+			mp.start();
 		}
 		else{// attempt to give suggestions
 			List<String>suggestions = database.secondaryQuery(query); 	// finds the most relvant matches in the database	
@@ -149,7 +154,8 @@ public class MainActivity extends ActionBarActivity {
 	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK){
 	    	ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 	    	String query = result.get(0);
-	    	showResult(query);
+	    	AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
+	    	actv.setText(query);
 	    }
 	    
 	}
