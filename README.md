@@ -4,4 +4,8 @@ The Mobile Waste Wizard is a mobile applications that is based off of the City o
 
 Video
 ===========
-[![Screen Recording](http://img.youtube.com/vi/EJLXUMOmKfY/0.jpg)](http://www.youtube.com/watch?v=EJLXUMOmKfY)
+
+<p align="center">
+  <a href="http://www.youtube.com/watch?v=EJLXUMOmKfY">
+  <img src="http://img.youtube.com/vi/EJLXUMOmKfY/0.jpg" alt="Fuudi's Layout"/>
+</p>
