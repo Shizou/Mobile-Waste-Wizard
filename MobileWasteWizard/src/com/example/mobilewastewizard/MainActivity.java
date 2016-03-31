@@ -23,73 +23,95 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity 
+{
 	private static final int REQ_CAPTURE_IMAGE = 0, REQ_VOICE = 1;
     private String imagePath = "";
     private Database database;
     private PopupWindow popupWindow;
 
-    /**Initializes the main activity, fills auto-complete suggestions with database items.
+    /**Initializes the main activity, fills auto-complete suggestions with 
+     * database items.
      */
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		this.database = new Database(this);
-
 		//fills the auto-complete selections
 		List<String> autoCompleteList = database.getTotalList();
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, autoCompleteList);
-		AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+		this,android.R.layout.simple_list_item_1, autoCompleteList);
+		
+		AutoCompleteTextView actv = 
+							  (AutoCompleteTextView) findViewById(R.id.search);
 		actv.setAdapter(adapter);
-
 		//receives query if coming from database activity
 		Intent intent = getIntent();
 		if(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM) != "")
+		{
 			actv.setText(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM));
+		}
 	}
 
 	/**
 	 * Gets the query from the input.
 	 * @param view
 	 */
-	public void getQuery(View view){
+	public void getQuery(View view)
+	{
 		EditText searchQuery = (EditText)findViewById(R.id.search);
 		CharSequence text = searchQuery.getText();
 		// handles queries
 		String query = text.toString();
 		if(popupWindow != null)
+		{
 			popupWindow.dismiss();
+		}
+		// The user has entered something!
+		// so now we work with their query
 		if(!query.equals(""))
+		{
 			showResult(query);
+		}
 		hideSoftKeyBoard();
 	}
 
 	/**
-	 * Searches the database for query. If found, displays an image for the resulting bin. If not, displays
-	 * possible items from the database close to the initial query.
+	 * Searches the database for query. If found, displays an image 
+	 * for the resulting bin. If not, displays possible items from the database
+	 * close to the initial query.
 	 * @param query Item to be searched for.
 	 */
-	public void showResult(String query){
+	public void showResult(String query)
+	{
 		int duration = Toast.LENGTH_LONG;
 		Context context = getApplicationContext();
 		String bin = database.initialQuery(query);
 		Toast toast = Toast.makeText(context, bin, duration);
-		if(bin!=null){// query matches a value in the database
+		// The user query is found within the database
+		if(bin!=null)
+		{
 			toast.show();
 			showImageResult(bin);
 			MediaPlayer mp = MediaPlayer.create(context, R.raw.ding);
 			mp.start();
 		}
-		else{// attempt to give suggestions
-			// finds the most relvant matches in the database
+		// attempt to give relevant suggestions
+		else
+		{
+			// finds the most relevant matches in the database
 			List<String>suggestions = database.secondaryQuery(query);
-			if(suggestions == null){
+			if(suggestions == null)
+			{
 				bin = "no bin";
 				toast = Toast.makeText(context, bin, duration);
 			}
-			else{
+			else
+			{
 				bin = "";
-				for(int i = 0;i < suggestions.size();i++){
+				for(int i = 0;i < suggestions.size();i++)
+				{
 					bin+= "Did you mean:" + suggestions.get(i)+"?\n";
 				}
 				toast = Toast.makeText(context, bin, duration);
@@ -102,9 +124,12 @@ public class MainActivity extends ActionBarActivity {
 	 * Displays a pop-up window with an image for the corresponding result.
 	 * @param bin The resulting bin from the search results.
 	 */
-	public void showImageResult(String bin){
+	public void showImageResult(String bin)
+	{
 		//builds pop-up window
-		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+		LayoutInflater layoutInflater = (LayoutInflater)getBaseContext()
+									     .getSystemService(
+									     LAYOUT_INFLATER_SERVICE);
 		View popupView = layoutInflater.inflate(R.layout.result_popup, null);
 		popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT,
 				      LayoutParams.WRAP_CONTENT);
@@ -114,22 +139,28 @@ public class MainActivity extends ActionBarActivity {
 		bin = bin.replace(' ', '_');
 		//gets image from assets folder
 		InputStream is = null;
-		try {
+		try 
+		{
 			is = getAssets().open("images/img_" + bin + ".png");
-		} catch (IOException e) {
+		} 
+		catch (IOException e)
+		{
 			System.out.println("images/img_" + bin + ".png");
 		}
 		ImageView result = (ImageView)popupView.findViewById(R.id.resultImg);
         result.setImageBitmap(BitmapFactory.decodeStream(is));
         //initializes dismiss button for pop-up
         Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
-        btnDismiss.setOnClickListener(new Button.OnClickListener(){
-			public void onClick(View v) {
+        btnDismiss.setOnClickListener(new Button.OnClickListener()
+        {
+			public void onClick(View v) 
+			{
 				popupWindow.dismiss();
-			}});
-
+			}
+		});
         popupWindow.setBackgroundDrawable(null);
-        AutoCompleteTextView actv = (AutoCompleteTextView)findViewById(R.id.search);
+        AutoCompleteTextView actv = 
+        		(AutoCompleteTextView)findViewById(R.id.search);
         //displays the pop-up
         popupWindow.showAsDropDown(actv, 0, 0);
 	}
@@ -138,44 +169,55 @@ public class MainActivity extends ActionBarActivity {
 	 * Receives a query from the built in speech recognition engine
 	 * @param view
 	 */
-	public void voice(View view){
+	public void voice(View view)
+	{
 		Intent i = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-       	 try {
+       	try 
+       	{
             startActivityForResult(i, REQ_VOICE);
-        } catch (Exception e) {
-       	 	Toast.makeText(this, "Error initializing speech to text engine.", Toast.LENGTH_LONG).show();
+        } 
+       	catch (Exception e) 
+       	{
+       	 	Toast.makeText(this, "Error initializing speech to text engine.",
+       	 			       Toast.LENGTH_LONG).show();
         }
 	}
 
-	/**
-	 * Passes the recognized speech into the query search.
+	/** Passes the recognized speech into the query search.
 	 */
-	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	public void onActivityResult(int requestCode, int resultCode, Intent data) 
+	{
 	    //handles voice results
-	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK){
-	    	ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+	    if(requestCode == REQ_VOICE && resultCode == RESULT_OK)
+	    {
+	    	ArrayList<String> result = 
+	    		data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 	    	String query = result.get(0);
-	    	AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
+	    	AutoCompleteTextView actv = 
+	    			(AutoCompleteTextView) findViewById(R.id.search);
 	    	actv.setText(query);
 	    }
 	}
 
-	/**
-	 * Switches to the database activity for manual search.
+	/** Switches to the database activity for manual search.
 	 * @param view
 	 */
-	public void toDatabase(View view){
+	public void toDatabase(View view)
+	{
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
 	}
-
-	private void hideSoftKeyBoard() {
+    
+	/***/
+	private void hideSoftKeyBoard()
+	{
 	    InputMethodManager imm = (InputMethodManager) getSystemService(
 	    						 INPUT_METHOD_SERVICE);
-	    if(imm.isAcceptingText()) { // verify if the soft keyboard is open
+		// verify if the soft keyboard is open
+	    if(imm.isAcceptingText())
+	    { 
 	        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
 	    }
 	}
-
 }
