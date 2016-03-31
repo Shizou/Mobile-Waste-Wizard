@@ -9,6 +9,7 @@ import java.util.*;
 import android.content.*;
 import android.support.v7.app.ActionBarActivity;
 
+<<<<<<< HEAD
 public class TextFileHandler extends ActionBarActivity  
 {
 	
@@ -42,6 +43,19 @@ public class TextFileHandler extends ActionBarActivity
 		// 8) Scrap Metal
 		// 9) Yard Waste
 		
+=======
+public class TextFileHandler extends ActionBarActivity  {
+
+	private final int CATEGORIES_SIZE = 10;
+	private List<List<String>> categories = new ArrayList<List<String>>();
+	private List<String>totalList = new ArrayList<String>();
+
+	/**Initializes categories by reading them from file.
+	 * @param cxt the context from which this class acquires privileges for the assets folder (in this case main activity)*/
+	public TextFileHandler(Context cxt){
+		for(int i = 0;i < this.CATEGORIES_SIZE;i++)// creates the new categories
+			this.categories.add(new ArrayList<String>());
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 		this.openCategoryFile(cxt,"categories/Blue.txt", categories.get(0));
 		this.openCategoryFile(cxt,"categories/BTTSWD.txt", categories.get(1));
 		this.openCategoryFile(cxt,"categories/EWaste.txt", categories.get(2));
@@ -52,8 +66,11 @@ public class TextFileHandler extends ActionBarActivity
 		this.openCategoryFile(cxt,"categories/PW.txt", categories.get(7));
 		this.openCategoryFile(cxt,"categories/SM.txt", categories.get(8));
 		this.openCategoryFile(cxt,"categories/YW.txt", categories.get(9));
+<<<<<<< HEAD
 		// in the OpenCategoryFile, all of the terms are also added to a total
 		// list so we are simply sorting the entries for further usage
+=======
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 		Collections.sort(totalList);
 	}
 

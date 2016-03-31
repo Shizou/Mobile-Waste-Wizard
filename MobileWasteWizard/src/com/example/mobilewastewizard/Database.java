@@ -10,9 +10,14 @@ import java.util.List;
 
 import android.content.Context;
 
+<<<<<<< HEAD
 public class Database 
 {
 	
+=======
+public class Database {
+
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 	private final int CATEGORIES_SIZE = 10, LIMIT = 20;
 	private String categoriesName[];
 	private List<List<String>> categories;
@@ -43,7 +48,6 @@ public class Database
 		this.categoriesName[9] = "Yard Waste";
 	}
 
-	
 	/**Returns whether true if the ith character in string
 	 * A is the same as the jth character in string B.
 	 * @param A first string
@@ -63,7 +67,11 @@ public class Database
 			return 1;
 		}
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 	/**Returns the edit-distance between two strings
 	 * Time complexity is O(NM) where N is the length of
 	 * first string and M is the length of the second string
@@ -113,9 +121,13 @@ public class Database
 		}
 		return dp[N-1][M-1];
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 	/**Checks whether a pattern is present in a text field
-	 * Time complexity is O(NM) where N is the length of the 
+	 * Time complexity is O(NM) where N is the length of the
 	 * text field and M is the query
 	 * @param text text to search pattern from
 	 * @param pattern pattern to search for
@@ -134,7 +146,7 @@ public class Database
 		}
 		return text.contains(pattern);
 	}
-		
+
 	/**Looks through the entire database looking for an exact match
 	 * Uses binary search so find the query in O(logN)
 	 * @param query string to be queried
@@ -161,8 +173,13 @@ public class Database
 	public List<String>secondaryQuery(String query)
 	{
 		List< String >list = new ArrayList< String >();
+<<<<<<< HEAD
 		List< Pair<Integer,String> >list2 = new ArrayList< 
 												Pair<Integer,String> >();
+=======
+		List< Pair<Integer,String> >list2 =
+		new ArrayList< Pair<Integer,String> >();
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 		List<String>suggestions = new ArrayList<String>();
 		for(int i = 0;i < this.CATEGORIES_SIZE;i++)
 		{
@@ -172,14 +189,20 @@ public class Database
 				{
 					list.add(categories.get(i).get(j));
 					break;
-				}						
+				}
 			}
 		}
 		Collections.sort(list);
+<<<<<<< HEAD
 		for(int i = 0;i < this.LIMIT && i < list.size();i++)
 		{
 			list2.add(new Pair<Integer,String>(
 					  editDistance(list.get(i),query), list.get(i)));
+=======
+		for(int i = 0;i < this.LIMIT && i < list.size();i++){
+			list2.add(new Pair<Integer,String>(
+				editDistance(list.get(i),query), list.get(i)));
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 		}
 		Collections.sort(list2);
 		for(int i = 0;i < this.LIMIT && i < list2.size();i++)
@@ -188,9 +211,14 @@ public class Database
 		}
 		return suggestions.size() == 0 ? null:suggestions;
 	}
+<<<<<<< HEAD
 	/** Returns the a list containing all of the terms in the database*/
 	public List<String> getTotalList()
 	{
+=======
+
+	public List<String> getTotalList(){
+>>>>>>> 3131719e110f08586a0937cc1d637f1d5d3aafcf
 		return this.totalList;
 	}
 }

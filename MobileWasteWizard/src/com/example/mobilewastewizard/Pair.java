@@ -4,16 +4,17 @@
  * */
 package com.example.mobilewastewizard;
 
-public class Pair<F extends Comparable<F>,S extends Comparable<S>> implements Comparable<Pair<F,S>>{
+public class Pair<F extends Comparable<F>,S extends Comparable<S>> implements
+Comparable<Pair<F,S>>{
 	public F first;
 	public S second;
-	
+
 	/**Creates a pair */
 	public Pair(F first, S second){
 		this.first = first;
 		this.second = second;
 	}
-	
+
 	@Override
 	/**Compares this item to another pair.
 	 * Compares first item before second item.
