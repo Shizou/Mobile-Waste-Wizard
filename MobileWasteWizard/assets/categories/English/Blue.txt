@@ -27,7 +27,8 @@ books
 bottles
 boxboard
 boxes
-bristol board / construction paper
+bristol board 
+construction paper
 buckets
 buisness
 burner liner
@@ -50,7 +51,8 @@ cartons
 cash receipt
 catalogue
 catalogues
-cd cases dvd cases
+cd cases 
+dvd cases
 cereal box
 cigarette package
 clam shell
