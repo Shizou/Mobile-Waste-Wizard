@@ -5,9 +5,9 @@ The Mobile Waste Wizard is a mobile applications that is based off of the City o
 
 Authors
 ===
-William Granados<me@wgma00.me>
-Justin Li<justin.li.jl@gmail.com>
-Burhan Quadri<burhan.qadri@outlook.com>
+William Granados 
+Justin Li 
+Burhan Quadri 
 
 Video/Demo
 ===========
