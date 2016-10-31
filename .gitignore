@@ -15,6 +15,8 @@ hs_err_pid*
 ####################### Eclipse ####################################
 
 .recommenders
+.classpath
+.project
 .checkstyle
 doc
 *.pydevproject
