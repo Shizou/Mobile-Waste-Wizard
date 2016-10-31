@@ -41,16 +41,20 @@ public class TextFileHandler extends ActionBarActivity
 		// 7) Prohibited Waste
 		// 8) Scrap Metal
 		// 9) Yard Waste
-		this.openCategoryFile(cxt,"categories/Blue.txt", categories.get(0));
-		this.openCategoryFile(cxt,"categories/BTTSWD.txt", categories.get(1));
-		this.openCategoryFile(cxt,"categories/EWaste.txt", categories.get(2));
-		this.openCategoryFile(cxt,"categories/Green.txt", categories.get(3));
-		this.openCategoryFile(cxt,"categories/Grey.txt", categories.get(4));
-		this.openCategoryFile(cxt,"categories/HHW.txt", categories.get(5));
-		this.openCategoryFile(cxt,"categories/OW.txt", categories.get(6));
-		this.openCategoryFile(cxt,"categories/PW.txt", categories.get(7));
-		this.openCategoryFile(cxt,"categories/SM.txt", categories.get(8));
-		this.openCategoryFile(cxt,"categories/YW.txt", categories.get(9));
+		String language[] = {"English", "French", "Spanish"};
+		for(int i = 0;i < language.length;i++)
+		{
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/Blue.txt", categories.get(0));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/BTTSWD.txt", categories.get(1));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/EWaste.txt", categories.get(2));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/Green.txt", categories.get(3));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/Grey.txt", categories.get(4));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/HHW.txt", categories.get(5));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/OW.txt", categories.get(6));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/PW.txt", categories.get(7));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/SM.txt", categories.get(8));
+			this.openCategoryFile(cxt,"categories/"+language[i]+"/YW.txt", categories.get(9));
+		}
 		// in the OpenCategoryFile, all of the terms are also added to a total
 		// list so we are simply sorting the entries for further usage
 		Collections.sort(totalList);
