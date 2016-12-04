@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SectionIndexer;
 
+import com.example.mobilewastewizard.backend.Database;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -29,7 +31,6 @@ import java.util.Set;
  * @see Database
  */
 public class DatabaseActivity extends ActionBarActivity {
-  private Database database;
   public static final String EXTRA_ITEM = "com.example.mobilewastewizard.ITEM";
 
   /**
@@ -38,13 +39,12 @@ public class DatabaseActivity extends ActionBarActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_database);
-    database = new Database(this);
     // fills list with total database
-    List<String> autoCompleteList = database.getTotalList();
+    List<String> autoCompleteList = Database.getInstance().getTotalList();
     ListView listView = (ListView) findViewById(R.id.listView);
     listView.setFastScrollEnabled(true);
     IndexerAdapter<String> adapter = new IndexerAdapter<String>(getApplicationContext(),
-        android.R.layout.simple_list_item_1, database.getTotalList());
+        android.R.layout.simple_list_item_1, Database.getInstance().getTotalList());
     listView.setAdapter(adapter);
     // listens for a selection
     listView.setOnItemClickListener(new OnItemClickListener() {

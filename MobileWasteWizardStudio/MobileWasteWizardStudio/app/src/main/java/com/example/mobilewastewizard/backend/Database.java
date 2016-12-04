@@ -1,9 +1,11 @@
-package com.example.mobilewastewizard.database;
-
-import android.content.Context;
+package com.example.mobilewastewizard.backend;
 
 import com.example.mobilewastewizard.generic.Pair;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,26 +21,43 @@ import java.util.Map;
  */
 public class Database {
 
-  private Map<String, Integer> database;
-  private List<String> totalList;
-  private TextFileHandler textFileSupport;
+  private static Database instance = new Database();
+
+  private Map<String, Constants.Categories> database = new HashMap<>();
+  private List<String> totalList = new ArrayList<>();
+
+  private Database(){}
+
+  public static Database getInstance() {
+    return instance;
+  }
+
+  /**
+   * Retrieves information from the file denoted by stream and maps the item from each line
+   * in the file to categoryFieldId; category field should be a constant from
+   * {@link Constants}.
+   *
+   * <p>Note that there is error checking on the information from the file.
+   *
+   * @param stream file stream to collect information from
+   * @param categoryFileId an integer from
+   */
+  public void retrieveInformationFromCategoryFile(InputStream stream, Constants.Categories categoryFileId) throws IOException{
+      BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+      while (br.ready()) {
+        String line = br.readLine();
+        this.database.put(line, categoryFileId);
+        this.totalList.add(line);
+      }
+  }
 
 
   /**
-   * Constructor.
-   * 
-   * <p>Initializes the database we will use to handle user queries.
-   * 
-   * @param cxt the context from which this class acquires privileges for the 
-   *        assets folder (in this case main activity)
+   * Sorts the list, this should only be done once.
    */
-  public Database(Context cxt) {
-    // Initialize miscellaneous stuff
-    this.textFileSupport = new TextFileHandler(cxt);
-    this.database = textFileSupport.getDatabase();
-    this.totalList = textFileSupport.getTotalList();
+  public void sortTotalList() {
+    Collections.sort(this.totalList);
   }
-
   /**
    * Returns integer value for the character at <code>indexOne</code> in 
    * <code>strOne</code> is the same as the character at <code>indexTwo</code>
@@ -106,11 +125,11 @@ public class Database {
    * Returns the category of the this user's <code>query</code> to the database.
    * 
    * @param query string to be queried
-   * @return string category from {@link categoriesName} if it's found, null otherwise
+   * @return string category from Constants.categoriesName if it's found, null otherwise
    */
   public String initialQuery(String query) {
-    Integer category = this.database.get(query);
-    return (category != null) ? Constants.categoriesName[category] : null;
+    Constants.Categories category = this.database.get(query);
+    return (category != null) ? Constants.categoriesName[category.ordinal()] : null;
   }
 
   /**
