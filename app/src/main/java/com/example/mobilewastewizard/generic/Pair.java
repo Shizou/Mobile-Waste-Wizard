@@ -1,4 +1,4 @@
-package com.example.mobilewastewizard;
+package com.example.mobilewastewizard.generic;
 
 /**
  * Creates a generic pair containing a elements of type <code>F</code> and <code>S</code>.

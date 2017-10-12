@@ -20,27 +20,25 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mobilewastewizard.backend.Constants;
+import com.example.mobilewastewizard.backend.Database;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Main activity class that will delegate tasks  given from the user to their
  * proper modules.
  *  
- * @author William Granados 
- * @author Justin Li
- * @author Burhan Quadri
+ * @author William Granados, Justin Li, Burhan Quadri
  *
  */
 public class MainActivity extends ActionBarActivity {
   
   /** absolute path to image taken by user.*/
   private String imagePath = "";
-  /** Database instance which handles user queries.*/
-  private Database database;
   /** Window pop-up displayed to users.*/
   private PopupWindow popupWindow;
 
@@ -50,9 +48,9 @@ public class MainActivity extends ActionBarActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    this.database = new Database(this);
+    this.initiateDatabase();
     // fills the auto-complete selections
-    List<String> autoCompleteList = database.getTotalList();
+    List<String> autoCompleteList = Database.getInstance().getTotalList();
     ArrayAdapter<String> adapter =
         new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, autoCompleteList);
 
@@ -62,6 +60,56 @@ public class MainActivity extends ActionBarActivity {
     Intent intent = getIntent();
     if (intent.getStringExtra(DatabaseActivity.EXTRA_ITEM) != "") {
       actv.setText(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM));
+    }
+  }
+
+  public void initiateDatabase() {
+    String pathInAssetsFolder = null;
+    for (int i = 0; i < Constants.supportedCategoriesLanguages.length; i++) {
+      // For every supported language we should have a translation of each object which goes into
+      // the specified categories in Constants.Categories. Also since we're storing all of this information
+      // locally, we'll be storing collecting this from informatino from the android assets folder.
+      pathInAssetsFolder = String.format("categories/%s/Blue.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.BLUE_BIN);
+
+      pathInAssetsFolder = String.format("categories/%s/BTTSWD.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.BRING_TO_TRANSFER_STATION_OR_WASTE_DEPOT);
+
+      pathInAssetsFolder = String.format("categories/%s/EWaste.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.E_WASTE);
+
+      pathInAssetsFolder = String.format("categories/%s/Green.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.GREEN_BIN);
+
+      pathInAssetsFolder = String.format("categories/%s/Grey.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.GREY_BIN);
+
+      pathInAssetsFolder = String.format("categories/%s/HHW.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.HOUSEHOLD_HAZARDOUS_WASTE);
+
+      pathInAssetsFolder = String.format("categories/%s/OW.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.OVERSIZED_WASTE);
+
+      pathInAssetsFolder = String.format("categories/%s/SM.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.SCRAP_METAL);
+
+      pathInAssetsFolder = String.format("categories/%s/YW.txt", Constants.supportedCategoriesLanguages[i]);
+      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.YARD_WASTE);
+    }
+    Database.getInstance().sortTotalList();
+  }
+
+  /**
+   * Queries the backend of our application and instantiates these items in our text file to our database.
+   *
+   * @param filePath path to the corresponding file in our assets folder
+   * @param itemType the type of the item that we'll be using.
+     */
+  public void initiateFileInDatabase(String filePath, Constants.Categories itemType) {
+    try {
+      Database.getInstance().retrieveInformationFromCategoryFile(getApplicationContext().getAssets().open(filePath), itemType);
+    } catch (IOException ex) {
+      ex.printStackTrace();
     }
   }
 
@@ -95,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
   public void showResult(String query) {
     int duration = Toast.LENGTH_LONG;
     Context context = getApplicationContext();
-    String bin = database.initialQuery(query);
+    String bin = Database.getInstance().initialQuery(query);
     Toast toast = Toast.makeText(context, bin, duration);
     // The user query is found within the database
     if (bin != null) {
@@ -105,7 +153,7 @@ public class MainActivity extends ActionBarActivity {
       mp.start();
     } else { // attempt to give relevant suggestions
       // finds the most relevant matches in the database
-      List<String> suggestions = database.secondaryQuery(query);
+      List<String> suggestions = Database.getInstance().secondaryQuery(query);
       if (suggestions == null) {
         bin = "no bin";
         toast = Toast.makeText(context, bin, duration);
