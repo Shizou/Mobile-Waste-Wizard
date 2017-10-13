@@ -16,7 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    task wrapper(type: Wrapper) {
+        gradleVersion = '3.3'
+    }
 }
+
 
 dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'

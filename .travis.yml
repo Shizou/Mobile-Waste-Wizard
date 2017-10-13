@@ -8,4 +8,5 @@ android:
     # The SDK version used to compile your project
     - android-21
 
-  script: ./gradlew connectedAndroidTest
+  before_script: 
+      - gradle wrapper --gradle-version 3.3 
