@@ -1,32 +1,15 @@
 package com.example.mobilewastewizard;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.PopupWindow;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.mobilewastewizard.backend.Constants;
-import com.example.mobilewastewizard.backend.Database;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Main activity class that will delegate tasks  given from the user to their
@@ -35,12 +18,15 @@ import java.util.List;
  * @author William Granados, Justin Li, Burhan Quadri
  *
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity{
   
-  /** absolute path to image taken by user.*/
-  private String imagePath = "";
-  /** Window pop-up displayed to users.*/
-  private PopupWindow popupWindow;
+  /** fragment stuff manager*/
+  private BottomNavigationView bottomNavigationView;
+  /** */
+  private RecentFragment recentFragment;
+  /** */
+  private SearchItemFragment searchItemFragment;
+
 
   /**
    * Initializes the main activity, fills auto-complete suggestions with database items.
@@ -48,211 +34,32 @@ public class MainActivity extends ActionBarActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    this.initiateDatabase();
-    // fills the auto-complete selections
-    List<String> autoCompleteList = Database.getInstance().getTotalList();
-    ArrayAdapter<String> adapter =
-        new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, autoCompleteList);
-
-    AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
-    actv.setAdapter(adapter);
-    // receives query if coming from database activity
-    Intent intent = getIntent();
-    if (intent.getStringExtra(DatabaseActivity.EXTRA_ITEM) != "") {
-      actv.setText(intent.getStringExtra(DatabaseActivity.EXTRA_ITEM));
-    }
-  }
-
-  public void initiateDatabase() {
-    String pathInAssetsFolder = null;
-    for (int i = 0; i < Constants.supportedCategoriesLanguages.length; i++) {
-      // For every supported language we should have a translation of each object which goes into
-      // the specified categories in Constants.Categories. Also since we're storing all of this information
-      // locally, we'll be storing collecting this from informatino from the android assets folder.
-      pathInAssetsFolder = String.format("categories/%s/Blue.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.BLUE_BIN);
-
-      pathInAssetsFolder = String.format("categories/%s/BTTSWD.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.BRING_TO_TRANSFER_STATION_OR_WASTE_DEPOT);
-
-      pathInAssetsFolder = String.format("categories/%s/EWaste.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.E_WASTE);
-
-      pathInAssetsFolder = String.format("categories/%s/Green.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.GREEN_BIN);
-
-      pathInAssetsFolder = String.format("categories/%s/Grey.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.GREY_BIN);
-
-      pathInAssetsFolder = String.format("categories/%s/HHW.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.HOUSEHOLD_HAZARDOUS_WASTE);
-
-      pathInAssetsFolder = String.format("categories/%s/OW.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.OVERSIZED_WASTE);
-
-      pathInAssetsFolder = String.format("categories/%s/SM.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.SCRAP_METAL);
-
-      pathInAssetsFolder = String.format("categories/%s/YW.txt", Constants.supportedCategoriesLanguages[i]);
-      this.initiateFileInDatabase(pathInAssetsFolder, Constants.Categories.YARD_WASTE);
-    }
-    Database.getInstance().sortTotalList();
-  }
-
-  /**
-   * Queries the backend of our application and instantiates these items in our text file to our database.
-   *
-   * @param filePath path to the corresponding file in our assets folder
-   * @param itemType the type of the item that we'll be using.
-     */
-  public void initiateFileInDatabase(String filePath, Constants.Categories itemType) {
-    try {
-      Database.getInstance().retrieveInformationFromCategoryFile(getApplicationContext().getAssets().open(filePath), itemType);
-    } catch (IOException ex) {
-      ex.printStackTrace();
-    }
-  }
-
-  /**
-   * Gets the query from the input.
-   * 
-   * @param view the view context where this is assigned to
-   */
-  public void getQuery(View view) {
-    EditText searchQuery = (EditText) findViewById(R.id.search);
-    CharSequence text = searchQuery.getText();
-    // handles queries
-    String query = text.toString();
-    if (popupWindow != null) {
-      popupWindow.dismiss();
-    }
-    // The user has entered something!
-    // so now we work with their query
-    if (!query.equals("")) {
-      showResult(query);
-    }
-    hideSoftKeyBoard();
-  }
-
-  /**
-   * Searches the database for query. If found, displays an image for the resulting bin. If not,
-   * displays possible items from the database close to the initial query.
-   * 
-   * @param query Item to be searched for.
-   */
-  public void showResult(String query) {
-    int duration = Toast.LENGTH_LONG;
-    Context context = getApplicationContext();
-    String bin = Database.getInstance().initialQuery(query);
-    Toast toast = Toast.makeText(context, bin, duration);
-    // The user query is found within the database
-    if (bin != null) {
-      toast.show();
-      showImageResult(bin);
-      MediaPlayer mp = MediaPlayer.create(context, R.raw.ding);
-      mp.start();
-    } else { // attempt to give relevant suggestions
-      // finds the most relevant matches in the database
-      List<String> suggestions = Database.getInstance().secondaryQuery(query);
-      if (suggestions == null) {
-        bin = "no bin";
-        toast = Toast.makeText(context, bin, duration);
-      } else {
-        bin = "";
-        for (int i = 0; i < suggestions.size(); i++) {
-          bin += "Did you mean:" + suggestions.get(i) + "?\n";
-        }
-        toast = Toast.makeText(context, bin, duration);
-      }
-    }
-    toast.show();
-  }
-
-  /**
-   * Displays a pop-up window with an image for the corresponding result.
-   * 
-   * @param bin The resulting bin from the search results.
-   */
-  public void showImageResult(String bin) {
-    // builds pop-up window
-    LayoutInflater layoutInflater =
-        (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-    View popupView = layoutInflater.inflate(R.layout.result_popup, null);
-    popupWindow = new PopupWindow(popupView, LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-    // displays result bin
-    TextView resultText = (TextView) popupView.findViewById(R.id.resultText);
-    resultText.setText(bin);
-    bin = bin.replace(' ', '_');
-    // gets image from assets folder
-    InputStream is = null;
-    try {
-      is = getAssets().open("images/img_" + bin + ".png");
-    } catch (IOException ioException) {
-      System.out.println("images/img_" + bin + ".png");
-    }
-    ImageView result = (ImageView) popupView.findViewById(R.id.resultImg);
-    result.setImageBitmap(BitmapFactory.decodeStream(is));
-    // initializes dismiss button for pop-up
-    Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-    btnDismiss.setOnClickListener(new Button.OnClickListener() {
-      public void onClick(View view) {
-        popupWindow.dismiss();
-      }
-    });
-    popupWindow.setBackgroundDrawable(null);
-    AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
-    // displays the pop-up
-    popupWindow.showAsDropDown(actv, 0, 0);
-  }
-
-  /**
-   * Receives a query from the built in speech recognition engine.
-   * 
-   * @param view the view context where this is assigned to
-   */
-  public void voice(View view) {
-    Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-    intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "en-US");
-    try {
-      startActivityForResult(intent, Constants.REQ_VOICE);
-    } catch (Exception exception) {
-      Toast.makeText(this, "Error initializing speech to text engine.", Toast.LENGTH_LONG).show();
-    }
-  }
-
-  /**
-   * Passes the recognized speech into the query search.
-   */
-  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-    // handles voice results
-    if (requestCode == Constants.REQ_VOICE && resultCode == RESULT_OK) {
-      ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-      String query = result.get(0);
-      AutoCompleteTextView actv = (AutoCompleteTextView) findViewById(R.id.search);
-      actv.setText(query);
-    }
-
-    //TODO implement image recognition
-    // if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-
-    // }
-  }
-
-  /**
-   * Switches to the database activity for manual search.
-   * 
-   * @param view the view context where this is assigned to
-   */
-  public void toDatabase(View view) {
-    Intent intent = new Intent(this, DatabaseActivity.class);
-    startActivity(intent);
-  }
-
-  private void hideSoftKeyBoard() {
-    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-    // verify if the soft keyboard is open
-    if (imm.isAcceptingText()) {
-      imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-    }
+    this.bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
+    this.recentFragment = recentFragment.newInstance("1", "2");
+    this.searchItemFragment = SearchItemFragment.newInstance(1);
+    this.bottomNavigationView.setOnNavigationItemSelectedListener(
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+              @Override
+              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                switch (item.getItemId()) {
+                  case R.id.bottombaritem_recents:
+                    transaction.replace(R.id.fragment_container, recentFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    return true;
+                  case R.id.bottombaritem_searches:
+                    transaction.replace(R.id.fragment_container, searchItemFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    return true;
+                  case R.id.bottombaritem_settings:
+                    // TODO
+                    return true;
+                }
+                return false;
+              }
+            });
   }
 }
