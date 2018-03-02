@@ -11,12 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mobilewastewizard.backend.Database;
-import com.example.mobilewastewizard.backend.Constants;
-
-import com.example.mobilewastewizard.dummy.DummyContent;
-import com.example.mobilewastewizard.dummy.DummyContent.DummyItem;
-
-import java.util.List;
+import com.example.mobilewastewizard.backend.Database.TrashItem;
 
 /**
  * A fragment representing a list of Items.
@@ -72,7 +67,7 @@ public class SearchItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySearchItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new MySearchItemRecyclerViewAdapter(Database.getInstance().getTotalList(), mListener));
         }
         return view;
     }
@@ -84,7 +79,7 @@ public class SearchItemFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
-            //TODO
+            //TODO Look at the supported languages and the option selected by the user and update the adapater accordingly
         }
     }
 
@@ -105,7 +100,6 @@ public class SearchItemFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(TrashItem item);
     }
 }

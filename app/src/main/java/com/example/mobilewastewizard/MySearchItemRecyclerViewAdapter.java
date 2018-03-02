@@ -7,23 +7,38 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.mobilewastewizard.SearchItemFragment.OnListFragmentInteractionListener;
-import com.example.mobilewastewizard.dummy.DummyContent.DummyItem;
+import com.example.mobilewastewizard.backend.Constants;
+import com.example.mobilewastewizard.backend.Database.TrashItem;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a {@link TrashItem} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
 public class MySearchItemRecyclerViewAdapter extends RecyclerView.Adapter<MySearchItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<TrashItem> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private final Map<Constants.Categories, String> categoryToText;
 
-    public MySearchItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MySearchItemRecyclerViewAdapter(List<TrashItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
+        this.categoryToText = new HashMap<>();
+        this.categoryToText.put(Constants.Categories.BLUE_BIN, "Blue bin");
+        this.categoryToText.put(Constants.Categories.BRING_TO_TRANSFER_STATION_OR_WASTE_DEPOT, "Transfer station");
+        this.categoryToText.put(Constants.Categories.E_WASTE, "E-Waste");
+        this.categoryToText.put(Constants.Categories.GREEN_BIN, "Green bin");
+        this.categoryToText.put(Constants.Categories.GREY_BIN, "Gray bin");
+        this.categoryToText.put(Constants.Categories.HOUSEHOLD_HAZARDOUS_WASTE, "HHW");
+        this.categoryToText.put(Constants.Categories.OVERSIZED_WASTE, "Oversized Waste");
+        this.categoryToText.put(Constants.Categories.PROHIBITED_WASTE, "Prohobitied Waste");
+        this.categoryToText.put(Constants.Categories.SCRAP_METAL, "Scrap Metal");
+        this.categoryToText.put(Constants.Categories.YARD_WASTE, "Yard Waste");
     }
 
     @Override
@@ -37,7 +52,6 @@ public class MySearchItemRecyclerViewAdapter extends RecyclerView.Adapter<MySear
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +74,7 @@ public class MySearchItemRecyclerViewAdapter extends RecyclerView.Adapter<MySear
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public TrashItem mItem;
 
         public ViewHolder(View view) {
             super(view);

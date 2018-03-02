@@ -7,7 +7,7 @@ public class Constants {
   /** Maximum number of similar entries to be returned when checking for similar words.*/
   public static final int LIMIT = 20;
   /** List of supported languages.*/
-  public static final String[] supportedCategoriesLanguages = {"English", "Spanish", "French"};
+  public static final String[] supportedCategoriesLanguages = {"english"};
   /** Collection of categories defined by the city of toronto's recycling council.*/
   public enum Categories{
     /** Blue Bin. */
