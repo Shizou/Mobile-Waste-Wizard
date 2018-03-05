@@ -6,9 +6,11 @@ import android.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.example.mobilewastewizard.backend.Database;
 import com.example.mobilewastewizard.backend.Database.TrashItem;
@@ -56,12 +58,12 @@ public class SearchItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Get the parent view for the search fragment
         View view = inflater.inflate(R.layout.fragment_searchitem_list, container, false);
-
         // Set the adapter
-        if (view instanceof RecyclerView) {
+        if (view instanceof RelativeLayout) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.search_list);
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {

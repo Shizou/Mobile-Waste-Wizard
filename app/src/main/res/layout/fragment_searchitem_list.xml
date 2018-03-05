@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/list"
-    android:name="com.example.mobilewastewizard.SearchItemFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    app:layoutManager="LinearLayoutManager"
-    app:fastScrollEnabled="true"
-    app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
-    app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
-    app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
-    app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
-    tools:context="com.example.mobilewastewizard.SearchItemFragment"
-    tools:listitem="@layout/fragment_searchitem" />
+    android:id="@+id/fragment_container_impl">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_list"
+        android:name="com.example.mobilewastewizard.SearchItemFragment"
+        android:layout_width="match_parent"
+        android:layout_height="470dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:fastScrollEnabled="true"
+        app:fastScrollHorizontalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollHorizontalTrackDrawable="@drawable/line_drawable"
+        app:fastScrollVerticalThumbDrawable="@drawable/thumb_drawable"
+        app:fastScrollVerticalTrackDrawable="@drawable/line_drawable"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="com.example.mobilewastewizard.SearchItemFragment"
+        tools:listitem="@layout/fragment_searchitem" />
+
+    <Button
+        android:id="@+id/voice_button"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/search_list"
+        android:layout_below="@+id/search_list"
+        android:background="@drawable/ic_mic_black_24px" />
+
+    <Button
+        android:id="@+id/camera_button"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/voice_button"
+        android:layout_alignBottom="@+id/voice_button"
+        android:layout_toEndOf="@+id/voice_button"
+        android:background="@drawable/ic_photo_camera_black_24px" />
+
+    <Button
+        android:id="@+id/search_settings_button"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/camera_button"
+        android:layout_alignBottom="@+id/camera_button"
+        android:layout_toEndOf="@+id/camera_button"
+        android:background="@drawable/ic_sort_black_24px" />
+
+    <Button
+        android:id="@+id/hide_keyboard_button"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/search_settings_button"
+        android:layout_alignBottom="@+id/search_settings_button"
+        android:layout_toEndOf="@+id/search_settings_button"
+        android:background="@drawable/ic_keyboard_hide_black_24px" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_list"
+        android:layout_alignEnd="@+id/search_list"
+        android:layout_toEndOf="@+id/hide_keyboard_button"
+        android:queryBackground="@color/white_70"/>
+
+</RelativeLayout>

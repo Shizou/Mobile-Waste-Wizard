@@ -4,19 +4,19 @@
 
     <item
         android:id="@+id/bottombaritem_recents"
-        android:icon="@drawable/ic_recents"
+        android:icon="@drawable/ic_restore_black_24px"
         android:title="Recents"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/bottombaritem_searches"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_search_black_24px"
         android:title="Search"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/bottombaritem_settings"
-        android:icon="@drawable/ic_settings"
+        android:icon="@drawable/ic_settings_black_24px"
         android:title="Settings"
         app:showAsAction="ifRoom"/>
 
