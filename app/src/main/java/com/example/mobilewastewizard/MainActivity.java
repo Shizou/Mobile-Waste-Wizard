@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity{
     this.initiateDatabase();
     Database.getInstance().sortTotalList();
     this.bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_nav);
-    this.recentFragment = recentFragment.newInstance("1", "2");
+    this.recentFragment = recentFragment.newInstance(1);
     this.searchItemFragment = SearchItemFragment.newInstance(1);
     this.prefsFragment = new PrefsFragment();
     this.bottomNavigationView.setOnNavigationItemSelectedListener(
