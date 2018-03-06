@@ -8,11 +8,12 @@ Authors
 ===
 William Granados 
 
-Justin Li 
+Recent UI Rewrite
+=====
+![Search](/screenshots/Search.png)
+![Search](/screenshots/Settings.png)
 
-Burhan Quadri 
-
-Video/Demo
+Deprecated - Video/Demo
 ===========
 
 <p align="center">
