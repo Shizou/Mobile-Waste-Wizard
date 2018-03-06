@@ -10,8 +10,7 @@ William Granados
 
 Recent UI Rewrite
 =====
-![Search](/screenshots/Search.png)
-![Search](/screenshots/Settings.png)
+![Search](/screenshots/Search.png) ![Settings](/screenshots/Settings.png)
 
 Deprecated - Video/Demo
 ===========
