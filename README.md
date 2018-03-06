@@ -8,16 +8,20 @@ Authors
 ===
 William Granados 
 
-Recent UI Rewrite
-=====
-![Search](/screenshots/Search.png =480x270) ![Settings](/screenshots/Settings.png =480x270)
+
+Recent UI Rewrite- Video/Demo
+===========
+
+<p align="center">
+  <a href="https://youtu.be/cS_lLZRC59k">
+  <img src="http://img.youtube.com/vi/cS_lLZRC59k/0.jpg" alt="Waste Wizard's Layout"/>
+</p>
+
 
 Deprecated - Video/Demo
 ===========
 
 <p align="center">
   <a href="http://www.youtube.com/watch?v=EJLXUMOmKfY">
-  <img src="http://img.youtube.com/vi/EJLXUMOmKfY/0.jpg" alt="Fuudi's Layout"/>
+  <img src="http://img.youtube.com/vi/EJLXUMOmKfY/0.jpg" alt="Waste Wizard's Layout"/>
 </p>
-
-
