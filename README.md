@@ -10,7 +10,7 @@ William Granados
 
 Recent UI Rewrite
 =====
-![Search](/screenshots/Search.png) ![Settings](/screenshots/Settings.png)
+![Search](/screenshots/Search.png =480x270) ![Settings](/screenshots/Settings.png =480x270)
 
 Deprecated - Video/Demo
 ===========
